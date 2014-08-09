@@ -1,5 +1,5 @@
 package netctoss;
 
-public class x0 {
+public class 冗余 {
 
 }
