@@ -1,0 +1,1 @@
+ssh-keygen -t rsa -C "xupeixuan@live.com"	//自动生成ssh-key
