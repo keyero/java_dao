@@ -1,0 +1,19 @@
+package day03;
+
+public class Demo03 {
+
+    public static void main(String[] args) {
+        char c = 20013;
+        /*
+         * c是char类型,20013是int类型的字面量
+         * 字面量的赋值不能超过char范围的情况才可以赋值
+         */
+//        c = -1; //编译错误,超范围
+//        c = 65536;  //编译错误,超范围
+//        int a = 66; //定义变量a
+//        c = a;  //编译错误,int类型不能赋值给char类型
+        
+        
+    }
+
+}

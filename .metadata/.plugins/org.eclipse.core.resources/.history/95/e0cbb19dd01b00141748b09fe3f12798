@@ -1,0 +1,62 @@
+package day06;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * 字母猜测游戏
+ * 业务猜测描述:猜测"随机生成"的字符序列
+ * 根据"用户输入"的字符序列"检查"是否猜测成功.
+ * 如果不成功就"提示"猜中情况,继续猜测
+ * 
+ */
+public class Demo03 {
+
+    public static void main(String[] args) {
+        char[] answer, input;
+        int[] result;
+        int count = 0;
+        System.out.println("欢迎使用猜数字游戏");
+        answer = generate(5);
+        System.out.println(answer);
+        while (true) {
+            input = userInput();
+            count++;
+            result = check(answer, input);
+            show(count, result);
+            if (result[0]==5 && result[1]==5) {
+                break;
+            }
+        }
+    }
+    
+    public static char[] generate(int n) {
+        char[] chs = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
+        boolean[] used = new boolean[chs.length];
+        int i;
+        char[] answer = new char[n];
+        int index = 0;
+        Random random = new Random();
+        do {
+            i = random.nextInt(chs.length);
+            if (used[i]) {
+                continue;
+            }
+            answer[index++] = chs[i];
+            used[i] = true;
+        } while (index != n);
+        return answer;
+    }
+    
+    public static char[] userInput() {
+        Scanner in = new Scanner(System.in);
+        char[] input = {};
+        do {
+            System.out.print("输入猜测字符:");
+            String str = in.nextLine();
+            input = str.toCharArray();
+        } while (input.length != 5);
+        return input;
+    }
+
+}

@@ -1,0 +1,18 @@
+package NetCTOSS;
+
+import org.junit.Test;
+
+public class TestFooDAO {
+
+    
+    @Test
+    public void TestSave() {
+        FooDAO foodao = new FooDAO();
+        Foo foo = new Foo();
+        foo.setId(0);
+        foo.setValue("sdf");
+        foodao.save(foo);
+        
+    }
+
+}

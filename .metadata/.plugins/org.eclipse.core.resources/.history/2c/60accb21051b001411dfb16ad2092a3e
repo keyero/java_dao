@@ -1,0 +1,21 @@
+package day04;
+
+import java.util.Scanner;
+
+/**
+ * 条件运算符
+ *  根据查询结果数量和每页显示数量,计算显示页数.
+ */
+public class Demo01 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("输入查询行数:");
+        int rows = sc.nextInt();
+        int size = 10;
+        int pages;
+        pages = rows%size == 0 ? rows/size : rows/size+1;
+        System.out.println("查询结果页数:" + pages);
+    }
+
+}

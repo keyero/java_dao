@@ -1,0 +1,12 @@
+package day02;
+/**
+ * 子类的构造器中一定调用父类的构造方法
+ *
+ */
+public class De04 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

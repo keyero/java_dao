@@ -1,0 +1,19 @@
+package day02;
+/**
+ * 递归
+ */
+public class Demo02 {
+
+    public static void main(String[] args) {
+        int n = 5;
+        int y = f(n);
+        System.out.println(y);
+    }
+
+    public static int f(int n) {
+        if (n==1) {
+            return 1;
+        }
+        return n + f(n-1);
+    }
+}

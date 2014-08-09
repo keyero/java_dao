@@ -1,0 +1,15 @@
+package day06;
+/**
+ * 字母猜测游戏
+ * 业务猜测描述:猜测"随机生成"的字符序列
+ * 根据"用户输入"的字符序列"检查"是否猜测成功.
+ * 如果不成功就"提示"猜中情况,继续猜测
+ * 
+ */
+public class Demo03 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

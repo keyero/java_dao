@@ -1,0 +1,24 @@
+package day04;
+
+public class Dem02 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+class Koo {
+    int a;
+    /**
+     * 内部类:可以共享外部类的属性和方法
+     */
+    class Goo {
+        public void test() {
+            System.out.println(Koo.this.a);
+        }
+    }
+    static class Hoo {
+        public void test() {
+//            System.out.println(Koo.this.a);
+        }
+    }
+}

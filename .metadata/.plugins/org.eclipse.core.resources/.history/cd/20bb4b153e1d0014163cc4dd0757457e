@@ -1,0 +1,41 @@
+package utils;
+
+import java.lang.reflect.InvocationTargetException;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang.StringUtils;
+
+public class EntityUtils {
+
+    /**
+     * 把结果集中的数据填充到对象中
+     * @throws SQLException 
+     * @throws Exception 
+     * @throws IllegalAccessException 
+     */
+    public static void fillEntity(ResultSet rs, Object obj) throws SQLException, IllegalAccessException, Exception {
+        ResultSetMetaData rsmd = rs.getMetaData();
+        for (int i=1; i<=rsmd.getColumnCount(); i++) {
+            String columnName = rsmd.getColumnName(i);
+            Object columnValue = rs.getObject(columnName);
+            String propertyName = toCamel(columnName);
+            if (columnValue != null) {
+                BeanUtils.setProperty(obj, propertyName, columnValue);
+            }
+        }
+    }
+    private static String toCamel(String name) {
+        name = name.toLowerCase();
+        String[] arr = name.split("_");
+        String camelName = arr[0];
+        if (arr.length>1) {
+            for (int i=1; i<arr.length; i++) {
+                camelName += StringUtils.capitalize(arr[i]);
+            }
+        }
+        return camelName;
+    }
+}

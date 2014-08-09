@@ -1,0 +1,30 @@
+package day02;
+/**
+ * 继承时候的构造器
+ * 类一定有构造器
+ * 构造器不能被继承
+ * 子类的构造器中一定调用父类的构造器
+ * 子类默认调用父类无参数构造器
+ * 可以使用super()调用在子类构造器中父类构造器
+ */
+public class De03 {
+
+    public static void main(String[] args) {
+        new Noo();
+    }
+}
+class Koo {
+    public Koo() {
+        System.out.println("Koo()");
+    }
+    public Koo(int m){
+        
+    }
+}
+class Noo extends Koo {
+    public Noo() {
+        //super();
+        super(5);
+        System.out.println("Noo()");
+    }
+}

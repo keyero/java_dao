@@ -1,0 +1,13 @@
+package day06;
+/**
+ * 斐波那契数列
+ */
+public class Demo02 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

@@ -1,0 +1,27 @@
+package day06;
+
+import java.util.Arrays;
+
+/**
+ * 在未排序的数组中使用二分查找结果不稳定
+ * 必须在排序的数组上使用二分查找
+ * 二分查找结果是元素的位置,如果返回负数表示没有找到
+ */
+public class Demo06 {
+
+    public static void main(String[] args) {
+        String[] names = {"Tom", "Andy", "Jerry"};
+        int index;
+        index = Arrays.binarySearch(names, "Jerry");
+        System.out.println(index);
+        index = Arrays.binarySearch(names, "Tom");
+        System.out.println(index);
+        
+        Arrays.sort(names);
+        index = Arrays.binarySearch(names, "Jerry");
+        System.out.println(index);
+        index = Arrays.binarySearch(names, "Tom");
+        System.out.println(index);
+    }
+
+}

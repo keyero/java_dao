@@ -1,0 +1,17 @@
+package day06;
+
+import java.util.Arrays;
+
+/**
+ * Arrays集合的工具类
+ * 包含了许多实现好的算法方法
+ */
+public class Demo04 {
+
+    public static void main(String[] args) {
+        String[] names = {"Tom", "Andy", "John", "Jerry"};
+        String str = Arrays.toString(names);
+        System.out.println(str);
+    }
+
+}

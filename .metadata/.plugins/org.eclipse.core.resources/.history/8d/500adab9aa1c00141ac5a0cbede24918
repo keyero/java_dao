@@ -1,0 +1,22 @@
+package day01;
+/**
+ * null值问题
+ * 空指针异常的原因是引用变量的值是null,没有引用任何对象
+ * 在nuul引用上调用了方法/属性会出现空指针异常,解决空指针
+ * 异常:在适当时候(在访问属性/方法)之前对引用变量赋值,使变量引用对象
+ */
+public class Dem10 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}
+class Cell3 {
+    int row;
+    int col;
+    public Cell3(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+}

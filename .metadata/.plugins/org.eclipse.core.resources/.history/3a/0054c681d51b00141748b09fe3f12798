@@ -1,0 +1,11 @@
+package day06;
+/**
+ * 数组的赋值
+ */
+public class Demo07 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

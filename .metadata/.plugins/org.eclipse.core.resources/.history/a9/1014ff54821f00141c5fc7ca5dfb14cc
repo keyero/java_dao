@@ -1,0 +1,90 @@
+package entity;
+/*
+ * 获取foo的属性name 等价于 foo.getName();
+ * 设置foo的属性name 等价于foo.setName();
+ * 
+ * BeanUtils.setProperty(obj,name,value)    设置的是属性名,(必须有set,get方法的变量)
+ * 实现机制是:调用foo的setName方法
+ * 
+ */
+import java.sql.Date;
+
+public class Service {
+    //成员变量 id
+    private int id;
+    private Cost cost = new Cost();
+    private Account account = new Account();
+    private String host;
+    private String osUsername;
+    private String osPasswd;
+    private char status;
+    private Date createDate;
+    private Date pauseDate;
+    private Date closeDate;
+    
+    
+    public void setRealName(String realname) {
+        account.setRealName(realname);
+    }
+    public String getRealName() {
+        return account.getRealName();
+    }
+    public void setCostName(String name) {
+        cost.setName(name);
+    }
+    public String getCostName() {
+        return cost.getName();
+    }
+    
+    //属性name--属性指的的是get   set方法
+    //set和get后面的字符串,第一个字母小写是属性
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getHost() {
+        return host;
+    }
+    public void setHost(String host) {
+        this.host = host;
+    }
+    public String getOsUsername() {
+        return osUsername;
+    }
+    public void setOsUsername(String osUsername) {
+        this.osUsername = osUsername;
+    }
+    public String getOsPasswd() {
+        return osPasswd;
+    }
+    public void setOsPasswd(String osPasswd) {
+        this.osPasswd = osPasswd;
+    }
+    public char getStatus() {
+        return status;
+    }
+    public void setStatus(char status) {
+        this.status = status;
+    }
+    public Date getCreateDate() {
+        return createDate;
+    }
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+    public Date getPauseDate() {
+        return pauseDate;
+    }
+    public void setPauseDate(Date pauseDate) {
+        this.pauseDate = pauseDate;
+    }
+    public Date getCloseDate() {
+        return closeDate;
+    }
+    public void setCloseDate(Date closeDate) {
+        this.closeDate = closeDate;
+    }
+ 
+}

@@ -1,0 +1,23 @@
+package day03;
+/**
+ * 计算生成A~Z的随机字符
+ */
+import java.util.Random;
+
+
+public class Demo04 {
+
+    public static void main(String[] args) {
+        char c;
+        c = 'A' + 1;
+        System.out.println(c);
+        
+        Random random = new Random();
+        int n = random.nextInt(26); //[0,26)
+        c = (char)('A'+n);  //计算生成A~Z的随机字符
+        System.out.println(c);
+        
+        
+    }
+
+}

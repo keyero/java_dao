@@ -1,0 +1,22 @@
+package day05;
+/**
+ * 特点: 在循环体结束以后检查循环是否需要继续执行
+ * 案例:将一个整数数字进行翻转
+ */
+public class Demo04 {
+
+    public static void main(String[] args) {
+        int num = 3278;
+        int sum = 0;
+        
+        do {
+            int last = num%10;
+            sum = sum*10+last;
+            num /= 10;
+        } while (num != 0);
+        System.out.println(sum);
+        
+        
+    }
+
+}

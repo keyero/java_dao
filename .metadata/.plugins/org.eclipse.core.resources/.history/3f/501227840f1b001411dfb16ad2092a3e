@@ -1,0 +1,15 @@
+package day04;
+/**
+ * sum = 9 + 99 +999 + 9999 + 99999
+ *
+ * num = num*10+9
+ * i   = 0 1 2
+ * sum += num
+ */
+public class Demo10 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

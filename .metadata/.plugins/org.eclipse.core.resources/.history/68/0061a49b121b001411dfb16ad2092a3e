@@ -1,0 +1,11 @@
+package day05;
+/**
+ * 验证用户输入
+ */
+public class Demo02 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

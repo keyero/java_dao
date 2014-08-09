@@ -1,0 +1,14 @@
+package NetCTOSS;
+/*
+ * entity
+ */
+public class FooDAO {
+    private static final String SAVE = "insert into foo(foo_id, foo_value) values(?,?)";
+    
+    public void save(Foo foo) {
+        Connection con = null;
+        try {
+            
+        }
+    }
+}

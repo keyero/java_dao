@@ -1,0 +1,33 @@
+package day02;
+/**
+ * 继承过程,对象的创建过程
+ */
+public class De05 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+class Aoo {
+    int a = 5;
+    public Aoo() {
+        a = 9;
+    }
+}
+class Boo extends Aoo {
+    int b = 6;
+    public Boo() {
+        super();
+        a = 7;
+        b = 1;
+    }
+}
+class Coo extends Boo {
+    int c = 8;
+    public Coo() {
+        super();
+        a = 3;
+        b = 4;
+        c = 5;
+    }
+}

@@ -1,0 +1,75 @@
+DROP TABLE account;
+CREATE TABLE account(		--注释--
+id NUMBER(9),
+login_name VARCHAR(20) NOT NULL,
+login_passwd VARCHAR(8) NOT NULL,
+status CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+real_name VARCHAR(20) NOT NULL,
+idcard VARCHAR(18) NOT NULL,
+birthdate DATE NOT NULL,
+gender CHAR(1) NOT NULL,
+occupation VARCHAR(50) NULL,
+telephone VARCHAR(50) NOT NULL,
+email VARCHAR(50),
+mailaddress VARCHAR(100) NOT NULL,
+zipcode CHAR(6) NOT NULL,
+qq VARCHAR(15),
+CONSTRAINT ACC_PK PRIMARY KEY(id)
+);
+
+DROP TABLE service;
+CREATE TABLE service(
+id NUMBER(10),
+account_id NUMBER(9) NOT NULL,
+cost_id NUMBER(4) NOT NULL,
+host VARCHAR(15) NOT NULL,
+os_username VARCHAR(8) NOT NULL,
+os_passwd VARCHAR(8) NOT NULL,
+status CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+CONSTRAINT ser_pk PRIMARY KEY(id),
+CONSTRAINT fk1 FOREIGN KEY(account_id) REFERENCES account(id),
+CONSTRAINT fk2 FOREIGN KEY(cost_id) REFERENCES cost(id)
+);
+
+DROP TABLE cost;
+CREATE TABLE cost(
+id NUMBER(4),
+name VARCHAR(50) NOT NULL,
+base_duration NUMBER(11),
+base_cost NUMBER(7, 2),
+unit_cost NUMBER(7, 2),
+descr VARCHAR(200),
+cost_type CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+CONSTRAINT cost_pk PRIMARY KEY(id)
+);
+
+DROP TABLE service_detail;
+CREATE TABLE service_detail(
+id NUMBER(11),
+service_id NUMBER(10) NOT NULL,
+host VARCHAR(15) NOT NULL,
+os_username VARCHAR(8) NOT NULL,
+os_passwd VARCHAR(8) NOT NULL,
+client_host VARCHAR(15) NOT NULL,
+pid NUMBER(11) NOT NULL,
+login_time DATE NOT NULL,
+logout_time DATE NOT NULL,
+duration NUMBER(20, 9) NOT NULL,
+cost NUMBER(20, 6) NOT NULL,
+CONSTRAINT serdet_pk PRIMARY KEY(id),
+CONSTRAINT serdet_fk FOREIGN KEY(service_id) REFERENCES service(id)
+);
+
+create sequence seq_ser start with 1 increment by 1;
+create sequence seq_acc start with 1 increment by 1;
+create sequence seq_cost start with 1 increment by 1;
+create sequence seq_sdl start with 1 increment by 1;

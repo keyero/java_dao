@@ -1,0 +1,84 @@
+package entity;
+
+import java.sql.Date;
+
+public class Service_detail {
+    private int id;
+    private int serviceId;
+    private String host;
+    private String osUsername;
+    private String osPasswd;
+    private String clientHost;
+    private int pid;
+    private Date loginTime;
+    private Date logoutTime;
+    private double duration;
+    private double cost;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getServiceId() {
+        return serviceId;
+    }
+    public void setServiceId(int serviceId) {
+        this.serviceId = serviceId;
+    }
+    public String getHost() {
+        return host;
+    }
+    public void setHost(String host) {
+        this.host = host;
+    }
+    public String getOsUsername() {
+        return osUsername;
+    }
+    public void setOsUsername(String osUsername) {
+        this.osUsername = osUsername;
+    }
+    public String getOsPasswd() {
+        return osPasswd;
+    }
+    public void setOsPasswd(String osPasswd) {
+        this.osPasswd = osPasswd;
+    }
+    public String getClientHost() {
+        return clientHost;
+    }
+    public void setClientHost(String clientHost) {
+        this.clientHost = clientHost;
+    }
+    public int getPid() {
+        return pid;
+    }
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+    public Date getLoginTime() {
+        return loginTime;
+    }
+    public void setLoginTime(Date loginTime) {
+        this.loginTime = loginTime;
+    }
+    public Date getLogoutTime() {
+        return logoutTime;
+    }
+    public void setLogoutTime(Date logoutTime) {
+        this.logoutTime = logoutTime;
+    }
+    public double getDuration() {
+        return duration;
+    }
+    public void setDuration(double duration) {
+        this.duration = duration;
+    }
+    public double getCost() {
+        return cost;
+    }
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+}

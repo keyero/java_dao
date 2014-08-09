@@ -1,0 +1,15 @@
+package day04;
+/**
+ * 求π
+ * i    1   5   9
+ * pi =4*(sum+=(1/i-1/(i+2)))
+ */
+public class Demo09 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

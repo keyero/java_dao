@@ -1,0 +1,12 @@
+package netctoss.test;
+
+import org.junit.Test;
+
+public class TestAccountDAO {
+
+    @Test
+    public void TestAccountDao() {
+        
+    }
+
+}

@@ -1,0 +1,14 @@
+package day03;
+/**
+ * 数据类型转换
+ *
+ */
+public class day06 {
+
+    public static void main(String[] args) {
+//        自动数据类型转换,隐含数据类型转换
+        
+        
+    }
+
+}

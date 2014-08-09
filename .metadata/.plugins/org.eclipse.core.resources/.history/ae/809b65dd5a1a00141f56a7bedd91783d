@@ -1,0 +1,16 @@
+package day02;
+
+public class Demo01 {
+
+    public static void main(String[] args) {
+//        System.out.println(age);    //编译错误,age没有找到
+        int age;    //变量声明
+//        System.out.println(age);    //编译错误,age没有初始化
+        age = 15;       //初始化,第一次赋值
+        System.out.println(age);
+        age = 9;        //重新赋值
+        
+        
+    }
+
+}

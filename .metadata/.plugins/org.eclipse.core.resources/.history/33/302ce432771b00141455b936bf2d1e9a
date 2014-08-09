@@ -1,0 +1,16 @@
+package test;
+
+import java.util.List;
+
+import dao.DeptDAO;
+import entity.Dept;
+
+public class TestDeptDAO {
+
+    public static void main(String[] args) throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        List<Dept> deptList = deptDAO.findAll();
+        
+    }
+
+}

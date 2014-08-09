@@ -1,0 +1,5 @@
+double	float	int		short	byte	boolean		char
+64位		32位		16位
+java推荐使用double
+
+

@@ -1,0 +1,50 @@
+package test;
+
+
+
+import java.sql.Date;
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.AccountDAO;
+import entity.Account;
+
+//@SuppressWarnings("unused")
+public class TestAccountDAO {
+
+    @Test
+    public void TestSave() throws Exception {
+        AccountDAO accountdao = new AccountDAO();
+        Account account = new Account();
+        account.setLoginName("xupeixuan");
+        account.setLoginPasswd("29821630");
+        account.setStatus("1");
+        account.setCreateDate(new Date(System.currentTimeMillis()));
+        account.setRealName("许珮烜");
+        account.setIdcard("610524199912565625");
+        account.setBirthdate(new Date(System.currentTimeMillis()));
+        account.setGender("m");
+        account.setTelephone("15121816181");
+        account.setEmail("29821630@163.com");
+        account.setMailaddress("address");
+        account.setZipcode("zip");
+        account.setId(2);
+
+        accountdao.save(account);
+        List<Account> accountList = accountdao.findAll(1, 1);
+        for (Account accounts : accountList) {
+            System.out.println(accounts.getId());
+        }
+        account = accountdao.findByID(100000002);
+//        account = accountdao.findByID(1002);        //查询结果可能为空
+        System.out.println(account);
+        System.out.println(account.getRealName());
+//        accountdao.update(account);
+//        accountdao.updateStatus(2, "3");
+//        System.out.println(accountdao.getTotalPages(9));
+//        System.out.println(accountdao.findBy(null, "sdf", null, null));
+      
+        
+    }
+}

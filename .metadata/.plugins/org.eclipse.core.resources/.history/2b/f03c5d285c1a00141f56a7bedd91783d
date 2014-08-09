@@ -1,0 +1,26 @@
+package day02;
+
+public class Demo02 {
+
+    public static void main(String[] args) {
+        int i = 234;    //java将"234"转化为2进制的值赋予i
+        String str = Integer.toBinaryString(i);
+        System.out.println(str);
+        
+        System.out.println(Integer.toBinaryString(-1));
+        System.out.println(Integer.toBinaryString(0));
+        System.out.println(Integer.toBinaryString(1));
+        
+        i = -1;
+        System.out.println(Integer.toBinaryString(i));
+        
+        i = 0xffffffff;
+        System.out.println(i);  //-1
+        int max = 0x7fffffff;
+        int min = 0x80000000;
+        System.out.println(min);
+        System.out.println(max);
+        
+    }
+
+}

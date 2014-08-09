@@ -1,0 +1,13 @@
+package day05;
+/**
+ * 将输入的一个整数倒转
+ * 如: num = 2356 结果是6532
+ *
+ */
+public class Demo01 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

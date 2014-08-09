@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration     
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="netctoss.po.Account"
+			alias="Account" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="jdbc" />
+			<!-- 数据源配置信息 -->			
+			<dataSource type="POOLED">
+				<!-- 数据库连接信息 -->
+				<property name="driver"
+					value="oracle.jdbc.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:xe" />
+				<property name="username" value="system" />
+				<property name="password" value="29821630" />
+			</dataSource>
+
+		</environment>
+	</environments>
+
+	<mappers>
+	<!-- 第五步在写完SQL写完后需要在这进行配置 -->
+		<mapper resource="netctoss/dao/AccountDAO.xml" />
+	</mappers>
+
+</configuration>

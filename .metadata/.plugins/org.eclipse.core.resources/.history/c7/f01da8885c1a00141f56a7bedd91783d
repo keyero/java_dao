@@ -1,0 +1,11 @@
+package day02;
+
+public class Demo03 {
+
+    public static void main(String[] args) {
+        int i = 5;
+        i=2000000000000;    //编译错误,直接量超出int范围
+        
+    }
+
+}

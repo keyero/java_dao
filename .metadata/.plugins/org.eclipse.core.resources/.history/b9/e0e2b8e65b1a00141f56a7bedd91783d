@@ -1,0 +1,13 @@
+package day02;
+
+public class Demo02 {
+
+    public static void main(String[] args) {
+        int i = 234;    //java将"234"转化为2进制的值赋予i
+        String str = Integer.toBinaryString(i);
+        System.out.println(str);
+        
+        
+    }
+
+}

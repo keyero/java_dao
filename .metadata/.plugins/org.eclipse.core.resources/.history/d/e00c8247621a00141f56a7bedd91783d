@@ -1,0 +1,17 @@
+package day03;
+
+public class Demo05 {
+
+    public static void main(String[] args) {
+        boolean pause = true;
+        boolean used = true;
+        boolean isMan = true;
+        if(pause) {
+            System.out.println("按[C]继续游戏");
+        }
+        
+        
+        
+    }
+
+}

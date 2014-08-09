@@ -1,0 +1,24 @@
+package day02;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Foof extends new Runnable() {
+    public void run() {
+        
+    }
+    private Foof(){
+    }
+    
+    private static Map<Thread, Foo> map = new HashMap<Thread, Foo>();
+
+    public static synchronized Foo getInstance() {
+        Thread t = Thread.currentThread();
+        Foo foo = map.get(t);
+        if (foo == null) {
+            foo = new Foo();
+            map.put(t, foo);
+        }
+        return foo;
+    }
+}

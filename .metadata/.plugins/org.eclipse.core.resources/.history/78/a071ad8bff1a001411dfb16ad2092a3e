@@ -1,0 +1,31 @@
+package day03;
+/**
+ * ++与--运算
+ *
+ */
+public class Demo09 {
+
+    public static void main(String[] args) {
+        int a = 1;
+        a++;
+        ++a;
+        System.out.println(a);
+        a=1;
+        int b;
+        b = a++;
+        
+        System.out.println(a+","+b);
+        
+        a = 1;
+        b = ++a;
+        System.out.println(a+","+b);
+        
+        int i = 0;
+        System.out.println(i++%3);
+        System.out.println(i++%3);
+        
+        
+        
+    }
+
+}

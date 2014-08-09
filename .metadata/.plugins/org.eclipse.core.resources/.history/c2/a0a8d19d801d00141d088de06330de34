@@ -1,0 +1,26 @@
+package day03;
+/**
+ * 静态方法
+ * 两个点距离计算
+ * 1.静态方法是属于类的方法,用类名调用
+ * 2.静态方法中没有隐含变量this不能访问当前对象
+ */
+public class Dem04 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+class Point {
+    int x;
+    int y;
+    public Point(int x, int y) {
+        this.x=x;
+        this.y=y;
+    }
+    public double distance(Point other) {
+        int a = this.x - other.x;
+        int b = this.y - other.y;
+        return Math.sqrt(a*a+b*b);
+    }
+}

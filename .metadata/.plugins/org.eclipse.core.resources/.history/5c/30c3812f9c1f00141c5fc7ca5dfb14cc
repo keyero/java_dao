@@ -1,0 +1,14 @@
+java DAO框架学习
+1.基本原理
+2.使用的接口
+
+Mybatis ibatis
+1.导入jar包
+2.编写MyBaits定义的配置文件(XML)
+	填充数据,格式以定义好
+3.编写实体类
+4.定义DAO(定义成接口形式)
+5.定义和DAO接口对应的SQL语句(XML)
+	一个对应的SQL语句写在一个xml中
+	注意:在配置文件中引用该XML
+6.调用MyBatis的API获得DAO的实现

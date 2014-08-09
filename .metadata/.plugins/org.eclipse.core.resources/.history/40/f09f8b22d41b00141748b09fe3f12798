@@ -1,0 +1,11 @@
+package day06;
+/**
+ * 排序方法
+ */
+public class Demo05 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

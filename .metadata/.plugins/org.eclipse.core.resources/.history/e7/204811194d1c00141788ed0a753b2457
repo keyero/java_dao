@@ -1,0 +1,20 @@
+package NetCTOSS;
+
+public class Foo {
+    private int foo_id;
+    private int foo_value;
+    public int getFoo_id() {
+        return foo_id;
+    }
+    public void setFoo_id(int foo_id) {
+        this.foo_id = foo_id;
+    }
+    public int getFoo_value() {
+        return foo_value;
+    }
+    public void setFoo_value(int foo_value) {
+        this.foo_value = foo_value;
+    }
+
+
+}

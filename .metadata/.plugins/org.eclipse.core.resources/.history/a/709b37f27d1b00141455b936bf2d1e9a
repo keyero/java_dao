@@ -1,0 +1,30 @@
+package test;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.DeptDAO;
+import entity.Dept;
+
+public class TestDeptDAO {
+
+    @Test       //标注必须加注
+    public void testFindAll() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        List<Dept> deptList = deptDAO.findAll();
+        for(Dept dept : deptList) {
+            System.out.println(dept.getLocation()+dept.getName()+dept.getNo());
+        }
+    }
+    @Test
+    public void testAdd() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        Dept dept = new Dept();
+        dept.setNo(15);
+        dept.setName("sdf");
+        dept.setLocation("0000");
+        deptDAO.add(dept);
+    }
+
+}

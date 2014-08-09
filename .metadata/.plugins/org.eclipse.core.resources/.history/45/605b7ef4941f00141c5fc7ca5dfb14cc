@@ -1,0 +1,14 @@
+package netctoss.test;
+
+import org.junit.Test;
+
+public class TestAccountDAO {
+
+    @Test
+    public void TestAccountDao() {
+        //表示配置文件的名称
+        String resource = "configuration.xml";
+        
+    }
+
+}

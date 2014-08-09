@@ -1,0 +1,45 @@
+package day05;
+
+import java.util.Scanner;
+
+
+public class Demo08 {
+
+    public static void main(String[] args) {
+        String[] names = {"Tom", "Jerry", "Andy", "John"};
+        int[] scores = new int[names.length];
+        Scanner in = new Scanner(System.in);
+        System.out.println("\t欢迎使用成绩管理系统");
+        while (true) {
+            System.out.print("1.输入成绩  2.列表    3.查找    0.退出:");
+            String cmd = in.nextLine();
+            if ("0".equals(cmd)) {
+                System.out.println("CU! @_@");
+                in.close();
+                break;
+            } else if ("1".equals(cmd)) {
+                System.out.println("输入成绩:");
+                for (int i=0; i<scores.length; i++) {
+                    System.out.print((i+1)+"."+names[i]+":");
+                    String str = in.nextLine();
+                    scores[i] = Integer.parseInt(str);
+                }
+            } else if ("3".equals(cmd)) {
+                System.out.print("查谁:");
+                String name = in.nextLine();
+                for (int i=0; i<names.length; i++) {
+                    if (names[i].equals(name)) {
+                        System.out.println(names[i]+":"+scores[i]);
+                        break;
+                    }
+                }
+            } else {
+                System.out.println("命令搞错了!");
+            }
+            
+        }
+        
+        
+    }
+
+}

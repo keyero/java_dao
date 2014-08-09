@@ -1,0 +1,20 @@
+package NetCTOSS;
+
+import java.sql.SQLException;
+
+import org.junit.Test;
+
+public class TestFooDAO {
+
+    
+    @Test
+    public void TestSave() throws SQLException {
+        FooDAO foodao = new FooDAO();
+        Foo foo = new Foo();
+        foo.setId(1);
+        foo.setValue("sdf");
+        foodao.save(foo);
+        
+    }
+
+}

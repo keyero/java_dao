@@ -1,0 +1,15 @@
+package day05;
+/**
+ * 数组的"迭代"
+ *  迭代:是指将数组元素逐一处理一遍,遍历==迭代
+ *  数组长度是有限的,使用for迭代
+ */
+public class Demo07 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

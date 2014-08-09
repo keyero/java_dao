@@ -1,0 +1,116 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.DBUtils;
+import entity.Dept;
+
+public class DeptDAO extends BaseDAO {
+    private static final String FIND_ALL = "select deptno,dname,loc from dept";
+    private static final String FIND_BYLOCATION="select deptno,dname,loc from dept where loc=?";
+    
+    private static final String ADD = "insert into dept(deptno, dname, loc) values(?,?,?)";
+    
+    private static final String UPDATE = "update dept set dname=?, loc=? where deptno=?";
+    
+    private static final String FIND_BY_ID = "select dname, loc from dept where deptno=?";
+    /**
+     * 测试通过
+     * 返回所有的部门信息
+     */
+    public List<Dept> findAll() throws Exception {
+      return query(FIND_ALL, null);
+    }
+
+    /**
+     * 测试通过
+     * 返回指定地址的部门
+     * @throws Exception 
+     */
+    public List<Dept> findByLocation(String location) throws Exception {
+      return query(FIND_BYLOCATION, new Object[]{location});
+    }
+    
+    /**
+     * 测试通过
+     * 添加部门操作
+     * @throws Exception 
+     */
+    public void add(Dept dept) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            PreparedStatement stmt = con.prepareStatement(ADD);
+            
+            //设置参数
+            stmt.setInt(1, dept.getNo());
+            stmt.setString(2, dept.getName());
+            stmt.setString(3, dept.getLocation());
+            
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+        
+    }
+    
+    /**
+     * 测试成功
+     * 更新部门信息
+     * 根据dept的id找到dept,并修改
+     * @throws Exception 
+     */
+    public void update(Dept dept) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            PreparedStatement stmt = con.prepareStatement(UPDATE);
+            stmt.setString(1, dept.getName());
+            stmt.setString(2, dept.getLocation());
+            stmt.setInt(3, dept.getNo());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+    
+    /**
+     * 测试成功
+     * 通过id查找信息
+     * @throws Exception 
+     */
+    public Dept findById(int id) throws Exception {
+       List list = query(FIND_BY_ID, new Object[]{id});
+       if (list.size() != 0) {
+           Dept dept = (Dept)list.get(0);
+           return dept;
+       } else {
+           return null;
+       }
+    }
+
+    @Override
+    public Object toEntity(ResultSet rs) throws Exception {
+        Dept dept = new Dept();
+        dept.setNo(rs.getInt("deptno"));
+        dept.setName(rs.getString("dname"));
+        dept.setLocation(rs.getString("loc"));
+        return dept;
+    }
+    
+}

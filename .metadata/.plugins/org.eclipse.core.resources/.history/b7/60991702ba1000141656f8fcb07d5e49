@@ -1,0 +1,51 @@
+package day04;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+/**
+ * 阻塞睡眠
+ * @author xupeixuan
+ *
+ */
+public class SleepBlockDemo {
+
+	public static void main(String[] args) {
+		/**
+		 * 电子表
+		 * 输出时间格式	HH:MM:SS
+		 */
+		Date now = null;
+		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss");
+
+		while(true){
+			now = new Date();
+			System.out.println(fmt.format(now));
+			/**
+			 * 每隔一秒钟循环一次
+			 */
+			try{
+				/**
+				 * 问题1:捕获异常是为什么
+				 * 	原因:通知当前线程正在被中断
+				 * 	  2:sleep是让当前线程进入阻塞
+				 * 那被阻塞的是哪个线程?
+				 * 	当我们的程序运行时,操作系统会启动一个进程来运行我们的jvm,
+				 * 而jvm启动起来后会创建一个线程来运行当前类的main方法,从而执行
+				 * 我们的程序,这里的sleep阻塞的就是这个线程
+				 * 	  3:循环是一秒执行一次吗?
+				 */
+				Thread.sleep(1000);
+				/**
+				 * 获取当前运行main方法的线程
+				 */
+				Thread current = Thread.currentThread();
+			}catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package day02;
+
+
+import org.junit.Test;
+
+public class TestFoo{
+
+    @Test
+    public void testFoo() {
+        Thread t1 = new Thread(target){};
+    }
+
+}

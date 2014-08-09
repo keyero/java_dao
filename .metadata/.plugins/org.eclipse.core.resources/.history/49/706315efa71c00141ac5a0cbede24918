@@ -1,0 +1,50 @@
+package day01;
+
+import java.util.Arrays;
+
+/**
+ * 重载:名字一样详细功能不同
+ * 1)运算符重载(只有一个"+")
+ * 2)方法重载 :方法名一样,参数不同
+ *  2.1) 如 println('中');
+ *         println((int)'中')
+ * 3)构造器重载:构造器名一样,参数不同
+ */
+public class Dem09 {
+
+    public static void main(String[] args) {
+        int[] ary = {'A', 'B', 'C'};
+        char[] chs = {'A', 'B', 'C'};
+        System.out.println(ary);
+        System.out.println(Arrays.toString(ary));
+        System.out.println(chs.toString());
+        
+        Cell2 c1 = new Cell2(4, 5);
+        c1.drop();
+        c1.drop(5);
+        System.out.println(c1.row);
+        Cell2 c2 = new Cell2(3, 4, 0x7777777);
+        System.out.println(c2.color);
+    }
+
+}
+class Cell2 {
+    int row;
+    int col;
+    int color;
+    public Cell2(int row, int col, int color) {
+        this.row = row;
+        this.col = col;
+        this.color = color;
+    }
+    public Cell2(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+    public void drop() {
+        row++;
+    }
+    public void drop(int step) {
+        row += step;
+    }
+}

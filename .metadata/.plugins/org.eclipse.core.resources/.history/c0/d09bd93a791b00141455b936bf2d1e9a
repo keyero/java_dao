@@ -1,0 +1,5 @@
+double	float	int		short	byte	boolean		char
+64位		32位		16位		8位		8位		2位			16位
+java推荐使用double
+
+线程安全:有没有成员变量,没有成员变量就线程安全,有成员变量则需要考虑成员变量是否安全

@@ -1,0 +1,20 @@
+package day02;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Foo {
+    private static Map<Thread, Foo> map = new HashMap<Thread, Foo>();
+    private Foo(){
+        
+    }
+    public static synchronized Foo getInstance() {
+        Thread t = Thread.currentThread();
+        Foo foo = map.get(t);
+        if (foo == null) {
+            foo = new Foo();
+            map.put(t, foo);
+        }
+        return foo;
+    }
+}

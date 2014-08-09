@@ -1,0 +1,42 @@
+package day05;
+
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+
+/**
+ * 客户端应用程序
+ * @author xupeixuan
+ *
+ */
+public class Client {
+    private Socket socket;
+    
+    public static void main(String[] args) throws Exception, IOException {
+        Client client = new Client();
+        
+        /**
+         * 实例化Socket,尝试连接指定的服务器端
+         */
+        client.socket = new Socket("localhost", 8088);
+        
+        /**
+         * 通过Socket创建输出流,用于向服务器端发送信息
+         */
+        OutputStream out = client.socket.getOutputStream();
+        
+        //将输出流加工为printWriter,以便发送字符串
+        PrintWriter pw = new PrintWriter(out, true);
+        
+        /**
+         * 向服务器发送信息,必须println自带换行,否则服务器端会出错
+         */
+        pw.println("你好!服务器!");
+        
+        
+        
+        
+    }
+    
+}

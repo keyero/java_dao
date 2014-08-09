@@ -1,0 +1,33 @@
+package day04;
+
+public class Dem03 {
+
+    public static void main(String[] args) {
+        class Foo {
+            
+        }
+        Foo foo = new Foo();
+        
+        Xoo xoo = new Xoo();    //创建对象
+        Xoo x = new Xoo(){};    //创建匿名类实例
+        Xoo x2 = new Xoo() {
+            public void test() {
+                System.out.println("x2.test()");
+            }
+            public void t() {
+                System.out.println("t()");
+            }
+        };
+        x2.test();//运行子类的重写方法
+//        x2.t(); //编译错误,没有t()
+    }
+}
+abstract class Too {
+    
+}
+class Xoo {
+    public void test() {
+        System.out.println("Xoo.test()");
+    }
+
+}

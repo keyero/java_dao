@@ -1,0 +1,15 @@
+package day02;
+
+
+import org.junit.Test;
+
+public class TestFoo{
+
+    @Test
+    public void testFoo() {
+        Foof f1 = Foof.getInstance();
+        
+        
+    }
+
+}

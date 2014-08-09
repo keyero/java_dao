@@ -1,0 +1,34 @@
+package dao;
+
+public interface OracleSQL {
+    public static final String AccountCol = "ID, LOGIN_NAME, LOGIN_PASSWD, STATUS, CREATE_DATE,"
+            + "PAUSE_DATE, CLOSE_DATE, REAL_NAME, ID_CARD, BIRTHDATE, GENDER, OCCUPATION, TELEPHONE, EMAIL, MAILADDRESS, ZIPCODE, QQ";
+    
+    public static final String ServiceCol = "ID, ACCOUNT_ID, COST_ID, UNIX_HOST, OS_USERNAME, LOGIN_PASSWD, STATUS, CREATE_DATE, PAUSE_DATE, CLOSE_DATE";
+    
+    public static final String CostCol = "ID, COST_NAME, BASE_DURATION, BASE_COST, UNIT_COST, STATUS, DESCR, CREATE_DATE, PAUSE_DATE, CLOSE_DATE, COST_TYPE";
+    
+    
+    public static final String SAVE = "insert into account("+AccountCol+") values(seq_acc.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
+    public static final String ACCOUNT_FIND_ALL = "select "+AccountCol+" from (select ID,LOGIN_NAME,LOGIN_PASSWD,"
+            + "STATUS,CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,"
+            + "OCCUPATION,TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ,rownum num from ACCOUNT "
+            + "where rownum<?) where num>=?";
+
+    public static final String FIND_BY_ID = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,"
+            + "CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,"
+            + "TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from account "
+            + "where id=?";
+    
+    public static final String UPDATE = "update ACCOUNT set LOGIN_NAME=?,LOGIN_PASSWD=?,STATUS=?,CREATE_DATE=?,PAUSE_DATE=?,CLOSE_DATE=?,REAL_NAME=?,IDCARD=?,BIRTHDATE=?,GENDER=?,OCCUPATION=?,TELEPHONE=?,EMAIL=?,MAILADDRESS=?,ZIPCODE=?,QQ=? where ID=?";
+    
+    public static final String FIND_BY = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,"
+            + "CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,"
+            + "TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from account where (1=? or idcard like ?) and (1=? or real_name like ?) and (1=? or login_name like ?) and (1= ? or status=?)";
+    
+    public static final String FIND_BY_ACCOUNT_ID = "select s.id, s.login_name,s.login_passwd, s.status, ,a.idcard, a.real_cost, c.cost_name from service s join account a on s.account_id=a.id join cost c on s.cost_id=c.id where account_id=?";
+
+    public static final String UPDATE_STATUS = "update service set status=? where id=?";
+}

@@ -1,0 +1,83 @@
+package dao;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import entity.Dept;
+
+public class DeptDAO extends BaseDAO {
+    private static final String FIND_ALL = "select deptno,dname,loc from dept";
+    private static final String FIND_BYLOCATION="select deptno,dname,loc from dept where loc=?";
+    
+    private static final String ADD = "insert into dept(deptno, dname, loc) values(?,?,?)";
+    
+    private static final String UPDATE = "update dept set dname=?, loc=? where deptno=?";
+    
+    private static final String FIND_BY_ID = "select deptno,dname, loc from dept where deptno=?";
+    
+    private static final String DELETE = "delete from dept where deptno=?";
+    /**
+     * 测试通过
+     * 返回所有的部门信息
+     */
+    public List<Dept> findAll() throws Exception {
+      return query(FIND_ALL, null);
+    }
+
+    /**
+     * 测试通过
+     * 返回指定地址的部门
+     * @throws Exception 
+     */
+    public List<Dept> findByLocation(String location) throws Exception {
+      return query(FIND_BYLOCATION, new Object[]{location});
+    }
+    
+    /**
+     * 测试通过
+     * 添加部门操作
+     * @throws Exception 
+     */
+    public void add(Dept dept) throws Exception {
+        add(ADD, new Object[]{dept.getNo(), dept.getName(), dept.getLocation()});
+    }
+
+    
+    /**
+     * 测试成功
+     * 更新部门信息
+     * 根据dept的id找到dept,并修改
+     * @throws Exception 
+     */
+    public void update(Dept dept) throws Exception {
+     update(UPDATE, new Object[]{dept.getName(), dept.getLocation(), dept.getNo()});
+    }
+    
+    /**
+     * 测试成功
+     * 通过id查找信息
+     * @throws Exception 
+     */
+    public Dept findById(int id) throws Exception {
+       List<Dept> list = query(FIND_BY_ID, new Object[]{id});
+       if (list.size() != 0) {
+           return list.get(0);
+       } else {
+           return null;
+       }
+    }
+    
+    public void delete(Dept dept) throws Exception {
+        delete(DELETE, new Object[]{dept.getNo()});
+    }
+
+    @Override
+    public Object toEntity(ResultSet rs) throws Exception {
+        Dept dept = new Dept();
+        dept.setNo(rs.getInt("deptno"));
+        dept.setName(rs.getString("dname"));
+        dept.setLocation(rs.getString("loc"));
+        return dept;
+    }
+    
+}

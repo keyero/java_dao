@@ -1,0 +1,43 @@
+package day02;
+/**
+ * 重写和重载的区别
+ * 重载:方法名一样,参数不一样的方法,一般功能相近的不同方法
+ * 调用时候根据调用"参数类型"来识别方法
+ * 
+ * 重写:子类中"修改"父类的方法
+ * 子类型中定义与父类型方法名和参数一样的方法
+ * 调用时,根据"对象类型"来调用相应的方法
+ *
+ */
+public class De08 {
+
+    public static void main(String[] args) {
+        Super obj = new Sub();
+        Too t = new Too();
+        t.t(obj);
+    }
+}
+
+class Too {
+    public void t(Super obj) {
+        System.out.println("t(super)");
+        obj.t();
+    }
+    public void t(Sub obj) {
+        System.out.println("t(sub");
+        obj.t();
+    }
+    
+}
+
+class Super {
+    public void t() {
+        System.out.println("super.t()");
+    }
+}
+class Sub extends Super {
+    public void t() {
+        System.out.println("sub.t()");
+    }
+}
+

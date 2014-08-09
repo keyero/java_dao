@@ -1,0 +1,29 @@
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.Types;
+
+import utils.DBUtils;
+
+
+public class TestCallProcedure {
+
+    public static void main(String[] args) throws Exception {
+//        用JDBC调用存储过程
+        Connection con = DBUtils.getConnection();
+//        创建可调用的statement
+        CallableStatement ctmt = con.prepareCall("call p_acc(?,?,?,?)");
+//        设置输入参数
+        ctmt.setInt(1, 200);
+        ctmt.setInt(2, 23);
+//        注册输出参数
+        ctmt.registerOutParameter(3, Types.INTEGER);
+        ctmt.registerOutParameter(4, Types.INTEGER);
+        
+//        执行存储过程
+        ctmt.execute();
+        int a = ctmt.getInt(3);
+        System.out.println(a+","+ctmt.getInt(4));
+        con.close();
+    }
+
+}

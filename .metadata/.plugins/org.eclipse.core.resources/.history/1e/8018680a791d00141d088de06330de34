@@ -1,0 +1,51 @@
+package day02;
+/**
+ * 方法的重写:"修改功能"
+ *  1 在子类中修改父类的行为,重写就是修改
+ *  2 语法:子类中定义与父类型相同的方法(方法名,参数一样)
+ *  3 调用重写的方法时候调用具体对象的方法
+ */
+public class De07 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}
+class Shape {
+    int x;
+    int y;
+    boolean contains(int x, int y) {
+        return false;
+    }
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+
+class Rect extends Shape {
+    int width;
+    int height;
+    public Rect(int x, int y, int w, int h) {
+        super.x = x;
+        super.y = y;
+        width = w;
+        height = h;
+    }
+}
+
+class Circle extends Shape {
+    int r;
+    public Circle(int x, int y, int r) {
+        super.x = x;
+        super.y = y;
+        this.r = r;
+    }
+    boolean contains(int x, int y) {
+        int a = this.x-x;
+        int b = this.y-y;
+        double c = Math.sqrt(a*a+b*b);
+        return c<=r;
+    }
+}

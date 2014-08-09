@@ -1,0 +1,177 @@
+DROP TABLE account;
+CREATE TABLE account(		--注释--
+id NUMBER(9),
+login_name VARCHAR(20) NOT NULL,
+login_passwd VARCHAR(8) NOT NULL,
+status CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+real_name VARCHAR(20) NOT NULL,
+idcard VARCHAR(18) NOT NULL,
+birthdate DATE NOT NULL,
+gender CHAR(1) NOT NULL,
+occupation VARCHAR(50) NULL,
+telephone VARCHAR(50) NOT NULL,
+email VARCHAR(50),
+mailaddress VARCHAR(100) NOT NULL,
+zipcode CHAR(6) NOT NULL,
+qq VARCHAR(15),
+CONSTRAINT ACC_PK PRIMARY KEY(id)
+);
+
+DROP TABLE service;
+CREATE TABLE service(
+id NUMBER(10),
+account_id NUMBER(9) NOT NULL,
+cost_id NUMBER(4) NOT NULL,
+host VARCHAR(15) NOT NULL,
+os_username VARCHAR(8) NOT NULL,
+os_passwd VARCHAR(8) NOT NULL,
+status CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+CONSTRAINT ser_pk PRIMARY KEY(id),
+CONSTRAINT fk1 FOREIGN KEY(account_id) REFERENCES account(id),
+CONSTRAINT fk2 FOREIGN KEY(cost_id) REFERENCES cost(id)
+);
+
+DROP TABLE cost;
+CREATE TABLE cost(
+id NUMBER(4),
+name VARCHAR(50) NOT NULL,
+base_duration NUMBER(11),
+base_cost NUMBER(7, 2),
+unit_cost NUMBER(7, 2),
+descr VARCHAR(200),
+cost_type CHAR(1) NOT NULL,
+create_date DATE NOT NULL,
+pause_date DATE,
+close_date DATE,
+CONSTRAINT cost_pk PRIMARY KEY(id)
+);
+
+DROP TABLE service_detail;
+CREATE TABLE service_detail(
+id NUMBER(11),
+service_id NUMBER(10) NOT NULL,
+host VARCHAR(15) NOT NULL,
+os_username VARCHAR(8) NOT NULL,
+os_passwd VARCHAR(8) NOT NULL,
+client_host VARCHAR(15) NOT NULL,
+pid NUMBER(11) NOT NULL,
+login_time DATE NOT NULL,
+logout_time DATE NOT NULL,
+duration NUMBER(20, 9) NOT NULL,
+cost NUMBER(20, 6) NOT NULL,
+CONSTRAINT serdet_pk PRIMARY KEY(id),
+CONSTRAINT serdet_fk FOREIGN KEY(service_id) REFERENCES service(id)
+);
+
+
+
+create sequence seq_ser start with 1 increment by 1;
+create sequence seq_acc start with 1 increment by 1;
+create sequence seq_cost start with 1 increment by 1;
+create sequence seq_sdl start with 1 increment by 1;
+drop table account;
+
+
+--插入测试数据--
+insert into COST values(seq_cost.nextval, 'xxx', 15, 0.2, 0.2, '...', '2', to_date('2013-10-05', 'yyyy-mm-dd'), null, null);
+insert into service values(seq_ser.nextval, 2, 1, '192.168.2.2', 'tf', '2982154', '2', to_date('2013-10-5', 'yyyy-mm-dd'), null, null);
+--视图连接--
+create or replace view v_Service 
+as select *
+from service s join account a on s.account_id=a.id
+join cost c on cost_id=c.id;
+
+
+select name from v$database;
+
+
+		--PL/SQL笔记
+--(1)
+set serveroutput on
+declare	--变量的声明
+a number(5) := 100;
+b number(5) := 200;
+c number(5);
+begin	--程序运行
+c := a + b;
+dbms_output.put_line('c='||c);		--输出函数	
+end;	--语句结束
+/			
+
+--(2)
+set serveroutput on
+declare
+a varchar(20) := 'hello,world';
+begin
+	dbms_output.put_line(a);
+end;
+/
+
+--IF语句联系
+set serveroutput on;
+declare
+a1 number(5) := 200;
+a2 number(5) := 200;
+begin
+	if a1>a2 then
+	 dbms_output.put_line(a1);
+	elsif a1=a2	then 		--elseif的用法
+	 dbms_output.put_line('a1');
+	else
+	 dbms_output.put_line(a2);
+	end if;
+end;
+/
+
+--loop循环
+set serveroutput on
+declare
+v_i number(5) := 1;
+v_sum number(5) := 0;
+begin
+	loop				--循环开始
+	v_sum := v_sum + v_i;
+	v_i := v_i + 1;
+	exit when v_i>100;
+	end loop;			--循环结束
+	dbms_output.put_line(v_sum);
+end;
+/
+
+--for循环(固定次数的循环)
+set serveroutput on
+declare
+v_sum number(5) := 0;
+begin
+	for v_i in 1..100 loop		--v_i不用声明
+	v_sum := v_sum +v_i;
+	end loop;
+	dbms_output.put_line(v_sum);
+end;
+/
+
+--打印员工表所有信息
+set serveroutput on
+declare
+--声明变量为数据表字段的类型
+v_id Account.id%type;		--通过%type取表的字段的类型
+v_status Account.status%type;
+cursor c_account_cursor is select id, status from account order by id;	--声明一个游标,对应一个查询
+
+begin
+	open c_account_cursor;		--游标操作
+	fetch c_account_cursor into v_id,v_status;
+	dbms_output.put_line(v_id||','||v_status);
+	close c_account_cursor;
+end;
+/
+
+
+
+

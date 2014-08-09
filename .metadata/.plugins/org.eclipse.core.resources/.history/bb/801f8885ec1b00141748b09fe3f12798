@@ -1,0 +1,33 @@
+package day01;
+/**
+ * 颜色的存储与还原
+ */
+public class Dem05 {
+
+    public static void main(String[] args) {
+        int r = 45;
+        int g = 128;
+        int b = 51;
+        int color = (r<<16)|(g<<8)|b;
+        System.out.println(Integer.toBinaryString(color));
+        System.out.println(Integer.toHexString(color));
+        
+        byte x = -6;
+        int i = x;
+        System.out.println(Integer.toHexString(i));
+        System.out.println(Integer.toHexString(x));
+        
+        System.out.println(Integer.toHexString(x & 0xff));
+        
+        color = 0x5280f0;
+        int blue = color & oxff;
+        int green = (color>>>8) & 0xff;
+        int red = (color>>>16) & 0xff;
+        
+        //快速实现一个整数*8
+        int n = 7;
+        int y = n<<3;
+        System.out.println(y);
+    }
+
+}

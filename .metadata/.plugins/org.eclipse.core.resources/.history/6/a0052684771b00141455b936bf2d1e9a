@@ -1,0 +1,27 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.DeptDAO;
+import entity.Dept;
+
+public class TestDeptDAO {
+
+    @Test
+    public void test() {
+        fail("Not yet implemented");
+    }
+    @Test
+    public void testFindAll() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        List<Dept> deptList = deptDAO.findAll();
+        for(Dept dept : deptList) {
+            System.out.println(dept.getLocation()+dept.getName()+dept.getNo());
+        }
+    }
+
+}

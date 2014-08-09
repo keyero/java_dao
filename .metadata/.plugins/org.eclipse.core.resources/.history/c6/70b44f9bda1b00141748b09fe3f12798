@@ -1,0 +1,24 @@
+package day01;
+
+import java.util.Arrays;
+import java.util.Random;
+
+public class Demo01 {
+
+    public static void main(String[] args) {
+        int[] ary = new int[10000];
+        Random random = new Random();
+        for (int i=0; i<ary.length; i++) {
+            ary[i] = random.nextInt();
+        }
+        int[] ary1 = Arrays.copyOf(ary, ary.length);
+        long t1 = System.currentTimeMillis();
+        Arrays.sort(ary);
+        long t2 = System.currentTimeMillis();
+        Demo01.sort(ary1);
+        long t3 = System.currentTimeMillis();
+        System.out.println(t2-t1);
+        System.out.println(t3-t2);
+    }
+
+}

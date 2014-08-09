@@ -1,0 +1,28 @@
+package dao;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import utils.EntityUtils;
+import entity.Service;
+
+public class ServiceDAO extends BaseDAO<Service> {
+    private static final String FIND_BY_ACCOUNT_ID = "select * from service where account_id=?";
+    public List<Service> findByAccountID(int accountID) throws Exception {
+        List<Service> list = query(FIND_BY_ACCOUNT_ID, new Object[]{accountID});
+        if (list.size() != 0) {
+            return list;
+        }
+        return null;
+    }
+    public void updateStatus(int id, int newStatus) {
+        
+    }
+    @Override
+    public Service toEntity(ResultSet rs) throws Exception {
+        Service service = new Service();
+        EntityUtils.fillEntity(rs, service);
+        return service;
+    }
+
+}

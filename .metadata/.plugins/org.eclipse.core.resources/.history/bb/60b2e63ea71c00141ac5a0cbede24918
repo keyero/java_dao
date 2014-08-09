@@ -1,0 +1,16 @@
+package day01;
+/**
+ * 重载:名字一样详细功能不同
+ * 1)运算符重载(只有一个"+")
+ * 2)方法重载 :方法名一样,参数不同
+ *  2.1) 如 println('中');
+ *         println((int)'中')
+ * 3)构造器重载:构造器名一样,参数不同
+ */
+public class Dem09 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

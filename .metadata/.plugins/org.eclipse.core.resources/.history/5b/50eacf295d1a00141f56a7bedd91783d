@@ -1,0 +1,24 @@
+package day02;
+
+public class Demo03 {
+
+    public static void main(String[] args) {
+        int i = 5;
+//        i = 20000000000;    //编译错误,直接量超出int范围
+//        long l = 20000000000;   //编译错误,直接量超出int范围
+        long l = 20000000000L;  //字面量是long类型
+        long now = System.currentTimeMillis();
+        System.out.println(now);
+        
+        long year = now/1000/60/60/24/365 + 1970;
+        System.out.println(year);
+        long max = 0x7fffffffffffffffL; //long时间耗尽的时刻
+        year = max/1000/60/60/24/365 + 1970;
+        System.out.println(year);
+        
+        int m = 0x7fffffff;
+        m = m+8;
+        System.out.println(m);
+    }
+
+}

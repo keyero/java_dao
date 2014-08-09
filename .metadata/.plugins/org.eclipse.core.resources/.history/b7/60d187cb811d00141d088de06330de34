@@ -1,0 +1,16 @@
+package day03;
+
+public class Dem08 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+class Dog {
+    final int id;
+    static int numOfDogs;
+    public Dog(int id) {
+        this.id = id;
+        Dog.numOfDogs++;
+    }
+}

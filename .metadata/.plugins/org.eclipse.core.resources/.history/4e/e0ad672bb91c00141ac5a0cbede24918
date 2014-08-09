@@ -1,0 +1,22 @@
+package day02;
+/**
+ * 子类的构造器中一定调用父类的构造器
+ *
+ */
+public class De04 {
+
+    public static void main(String[] args) {
+        new Yoo();
+    }
+}
+class Xoo {
+    public Xoo(int a) {
+        System.out.println("Xoo(int)");
+    }
+}
+class Yoo extends Xoo {
+    public Yoo() { }    //编译错误,子类不能调用默认的super()
+    public Yoo() {
+        super(8);
+    }
+}

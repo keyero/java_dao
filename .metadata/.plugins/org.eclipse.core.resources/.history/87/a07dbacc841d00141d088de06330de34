@@ -1,0 +1,14 @@
+package day04;
+/**
+ * 代码块:在对象创建期间执行,类似于构造器中的代码
+ * 静态代码块:在类加载旗舰执行
+ *  静态代码可以用于只加载一次的静态资源,如图片资源等
+ */
+public class DEM01 {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+    }
+
+}

@@ -1,0 +1,17 @@
+package entity;
+
+import java.sql.Date;
+
+public class Cost {
+    private int id;
+    private String name;
+    private int base_duration;
+    private float base_cost;
+    private float unit_cost;
+    private String descr;
+    private char cost_type;
+    private Date create_date;
+    private Date pause_date;
+    private Date close_date;
+    
+}

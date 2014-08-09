@@ -1,0 +1,26 @@
+package NetCTOSS;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+import utils.DBUtils;
+
+/*
+ * entity
+ */
+public class FooDAO {
+    private static final String SAVE = "insert into foo(foo_id, foo_value) values(?,?)";
+    
+    public void save(Foo foo) {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            /**
+             * 先获取foo_id的最大值
+             */
+            PreparedStatement stmt = con.prepareStatement(SAVE);
+            stmt.setInt(1, x);
+            stmt.setString(2, foo.getValue());
+        }
+    }
+}

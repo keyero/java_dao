@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 整个文件用来封装AccountDAO中的方法对应的SQL语句 -->
+	<!-- namespace:DAO的类型名称 -->
+<mapper namespace="netctoss.dao.AccountDAO">
+	<cache />
+	<!-- 一个select封装一个查询SQL(和一个查询方法对应) -->
+	<!-- id对应的方法名称,resultType对应返回的类型 -->
+	<select id="findAll" resultType="Account">
+	<!-- 别名使用对应该列的实体对象的属性名,即getset方法后面的名称 -->
+		<![CDATA[
+	    SELECT 
+	    ID id,
+	    LOGIN_NAME loginName,
+	    LOGIN_PASSWD loginPasswd,
+	    STATUS status,
+		CREATE_DATE createDate,
+		PAUSE_DATE pauseDate,
+		CLOSE_DATE closeDate,
+		REAL_NAME realName,
+		IDCARD idcard,
+		BIRTHDATE birthdate,
+		GENDER gender,
+		OCCUPATION occupation,
+		TELEPHONE telephone,
+		EMAIL email,
+		MAILADDRESS mailaddress,
+		ZIPCODE zipcode,
+		QQ qq
+		FROM ACCOUNT
+	 ]]>
+	</select>
+	<select id="findByRealName" resultType="Account">
+		<![CDATA[
+	  SELECT 
+	    ID id,
+	    LOGIN_NAME loginName,
+	    LOGIN_PASSWD loginPasswd,
+	    STATUS status,
+		CREATE_DATE createDate,
+		PAUSE_DATE pauseDate,
+		CLOSE_DATE closeDate,
+		REAL_NAME realName,
+		IDCARD idcard,
+		BIRTHDATE birthdate,
+		GENDER gender,
+		OCCUPATION occupation,
+		TELEPHONE telephone,
+		EMAIL email,
+		MAILADDRESS mailaddress,
+		ZIPCODE zipcode,
+		QQ qq
+		FROM ACCOUNT 
+	    WHERE REAL_NAME=#{realName}
+	]]>
+	</select>
+	<select id="findById" resultType="Account">
+		<![CDATA[
+	SELECT 
+	    ID id,
+	    LOGIN_NAME loginName,
+	    LOGIN_PASSWD loginPasswd,
+	    STATUS status,
+		CREATE_DATE createDate,
+		PAUSE_DATE pauseDate,
+		CLOSE_DATE closeDate,
+		REAL_NAME realName,
+		IDCARD idcard,
+		BIRTHDATE birthdate,
+		GENDER gender,
+		OCCUPATION occupation,
+		TELEPHONE telephone,
+		EMAIL email,
+		MAILADDRESS mailaddress,
+		ZIPCODE zipcode,
+		QQ qq
+		FROM ACCOUNT 
+	    WHERE ID=#{id}
+	]]>
+	</select>
+
+	<select id="findAllByPage" resultType="Account">
+		<![CDATA[
+	SELECT * 
+		FROM (SELECT ID id,LOGIN_NAME loginName,LOGIN_PASSWD loginPasswd,STATUS status,
+		CREATE_DATE createDate,PAUSE_DATE pauseDate,CLOSE_DATE closeDate,
+		REAL_NAME realName,IDCARD idcard,BIRTHDATE birthdate,GENDER gender,
+		OCCUPATION occupation,TELEPHONE telephone,EMAIL email,MAILADDRESS mailaddress,
+		ZIPCODE zipcode,QQ qq, ROWNUM NUM 
+		FROM ACCOUNT 
+		WHERE ROWNUM < (#{page}-1)*#{rowsPerPage}+1+#{rowsPerPage})
+		WHERE NUM >= (#{page}-1)*#{rowsPerPage}+1
+	]]>
+	</select>
+
+	<select id="findBy" resultType="Account">
+		<![CDATA[
+	    SELECT 
+	    ID id,
+	    LOGIN_NAME loginName,
+	    LOGIN_PASSWD loginPasswd,
+	    STATUS status,
+		CREATE_DATE createDate,
+		PAUSE_DATE pauseDate,
+		CLOSE_DATE closeDate,
+		REAL_NAME realName,
+		IDCARD idcard,
+		BIRTHDATE birthdate,
+		GENDER gender,
+		OCCUPATION occupation,
+		TELEPHONE telephone,
+		EMAIL email,
+		MAILADDRESS mailaddress,
+		ZIPCODE zipcode,
+		QQ qq
+		FROM ACCOUNT 
+		WHERE 1=1 
+	 ]]>
+		<if test="idcard != null">		<!-- 条件判断 -->
+			<![CDATA[ AND ID_CARD LIKE #{idcard}]]>
+		</if>
+		<if test="realName != null">
+			<![CDATA[ AND REAL_NAME LIKE #{realName}]]>
+		</if>
+		<if test="loginName != null">
+			<![CDATA[ AND LOGIN_NAME LIKE #{loginName}]]>
+		</if>
+		<if test="status != null">
+			<![CDATA[ AND STATUS = #{status}]]>
+		</if>
+	</select>
+
+	<insert id="save" parameterType="Account">		<!-- 参数类型指定,参数只能有一个 -->
+		<![CDATA[
+		INSERT INTO ACCOUNT
+		(ID,
+		LOGIN_NAME,
+		LOGIN_PASSWD,
+		STATUS,
+		CREATE_DATE,
+		PAUSE_DATE,
+		CLOSE_DATE,
+		REAL_NAME,
+		IDCARD,
+		BIRTHDATE,
+		GENDER,
+		OCCUPATION,
+		TELEPHONE,
+		EMAIL,
+		MAILADDRESS,
+		ZIPCODE,
+		QQ) VALUES(
+		SEQ_ACCOUNT.nextval,
+		#{loginName},
+		#{loginPasswd},
+		#{status},
+		#{createDate,jdbcType=DATE},
+		#{pauseDate,jdbcType=DATE},
+		#{closeDate,jdbcType=DATE},
+		#{realName},
+		#{idcard},
+		#{birthdate},
+		#{gender},
+		#{occupation,jdbcType=VARCHAR},
+		#{telephone,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR},
+		#{mailaddress,jdbcType=VARCHAR},
+		#{zipcode,jdbcType=VARCHAR},
+		#{qq,jdbcType=VARCHAR})
+		]]>
+		<!-- 在oracle中如果字段有可能为空的时候必须加类型说明,否则会出错 -->
+	</insert>
+	
+	<update id="update" parameterType="Account">
+	<![CDATA[]]>
+	</update>
+
+</mapper>
+
+
+
+

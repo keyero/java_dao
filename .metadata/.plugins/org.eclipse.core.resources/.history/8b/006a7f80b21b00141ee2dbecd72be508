@@ -1,0 +1,58 @@
+package test;
+
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.DeptDAO;
+import entity.Dept;
+
+public class TestDeptDAO {
+
+    @Test       //标注必须加注
+    public void testFindAll() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        List<Dept> deptList = deptDAO.findAll();
+        for(Dept dept : deptList) {
+            System.out.println(dept.getLocation()+dept.getName()+dept.getNo());
+        }
+    }
+    @Test
+    public void testAdd() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        Dept dept = new Dept();
+        dept.setNo(15);
+        dept.setName("sdf");
+        dept.setLocation("1111");
+        deptDAO.add(dept);
+    }
+    
+    @Test
+    public void testUpdate() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        Dept dept = new Dept();
+        dept.setNo(10);
+        dept.setName("prixuan");
+        dept.setLocation("xxxxx");
+        deptDAO.update(dept);
+        
+    }
+    
+    @Test
+    public void testfindbyid() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        Dept dept = new Dept();
+        dept = deptDAO.findById(10);
+        System.out.println("找到"+dept.getName()+",id为"+dept.getNo());
+    }
+    
+    @Test
+    public void testfindByLocation() throws Exception {
+        DeptDAO deptDAO = new DeptDAO();
+        List<Dept> deptList = deptDAO.findByLocation("xx");
+        for(Dept dept : deptList) {
+            System.out.println(dept.getName()+","+dept.getNo());
+        }
+    }
+
+}

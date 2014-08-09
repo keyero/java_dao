@@ -1,0 +1,15 @@
+package day01;
+/**
+ * 移位运算
+ */
+public class Dem04 {
+
+    public static void main(String[] args) {
+        int n = 0xfffffffa;
+        int m = n<<1;
+        System.out.println(Integer.toBinaryString(n));
+        
+        
+    }
+
+}

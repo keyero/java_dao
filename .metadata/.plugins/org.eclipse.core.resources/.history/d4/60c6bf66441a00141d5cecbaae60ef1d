@@ -1,0 +1,25 @@
+package day02;
+
+import org.apache.commons.dbcp2.BasicDataSource;
+
+
+
+
+public class TestDBCP {
+
+    public static void main(String[] args) throws Exception {
+        BasicDataSource ds = new BasicDataSource();
+        
+        ds.setDriverClassName("oracle.jdbc.OracleDriver");
+        ds.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
+        ds.setUsername("system");
+        ds.setPassword("29821630");
+        
+        ds.setInitialSize(10);  //初始化个数
+        ds.setMaxActive(100);   //最大活动连接个数
+        ds.setMaxIdle(5);       //最大空闲连接个数
+        
+        System.out.println(ds.getConnection());
+    }
+
+}

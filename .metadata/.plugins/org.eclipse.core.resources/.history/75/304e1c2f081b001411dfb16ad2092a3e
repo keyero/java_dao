@@ -1,0 +1,16 @@
+package day04;
+/**
+ * + 是java中唯一的"重载"的运算符,数学加法和字符串连接
+ * 
+ * 重载: 名称一样不同的功能
+ * +是重载的运算符: 数学加,字符串连接两种功能
+ */
+public class Demo03 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

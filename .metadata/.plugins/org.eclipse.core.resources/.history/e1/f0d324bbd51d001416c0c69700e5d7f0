@@ -1,0 +1,72 @@
+package dao;
+
+import java.sql.ResultSet;
+import java.util.List;
+
+import utils.EntityUtils;
+import entity.Account;
+
+
+public class AccountDAO extends BaseDAO<Account> implements OracleSQL{
+//    private static final String FIND_ALL = "select id, login_name, login_passwd, status, create_date, pause_date, close_date, real_name, idcard, birthdate, gender, occupation, telephone, email, mailaddress, zipcode, qq from account";
+/**
+ *    测试通过,查找满足条件的页的所有账户
+ */
+    private static final int N=16;
+    public List<Account> findAll(int page, int rowsPerPage) throws Exception {
+        
+        int min = (page-1)*rowsPerPage+1;
+        int max = min + rowsPerPage;
+        return query(ACCOUNT_FIND_ALL, new Object[] {max,min});
+    }
+    public int getTotalPages(int rowsPerPage) {
+        String sql = "select count(id) from account";
+        
+    }
+    
+    
+    
+/**
+ *     测试通过,用于保存账户
+ */
+   public void save(Account account) throws Exception {
+        add(SAVE, account.toArray());
+        
+    }
+/**
+ * 测试通过,用于通过账户id查询用户的信息
+ */
+   public Account findByID(int id) throws Exception {
+       List<Account> list = query(FIND_BY_ID, new Object[]{id});
+       if (list.size() != 0) {
+           return list.get(0);
+       } else return null;
+       
+   }
+   /**
+    * 测试成功,用于更新用户的信息
+    */
+   public void update(Account account) throws Exception {
+       Object[] obj = new Object[N+1];
+       System.arraycopy(account.toArray(), 0, obj, 0, N);
+       obj[16] = account.getId();
+       update(UPDATE, obj);
+   }
+   
+   /**
+    * 测试成功,用于更新用户的状态
+    */
+   public void updateStatus(int id, String newStatus) throws Exception {
+       Account account = findByID(id);
+       account.setStatus(newStatus);
+       update(account);
+   }
+   
+   
+   
+   public Account toEntity(ResultSet rs) throws Exception {
+        Account account = new Account();
+        EntityUtils.fillEntity(rs, account);
+        return account;
+    }
+}

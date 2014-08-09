@@ -1,0 +1,21 @@
+package day02;
+/**
+ * 子类中定义与父类型同名属性
+ *  1.java支持子类型与父类型定义同名属性
+ *  2.很少在实际中使用,不建议使用的现象
+ *  3.属性的访问是绑定在变量的类型上的
+ */
+public class De06 {
+
+    public static void main(String[] args) {
+        Cheater c = new Cheater();
+        Person p = c;
+        System.out.println(c.name+","+p.name);
+    }
+}
+class Person {
+    String name = "灰太狼";
+}
+class Cheater extends Person {
+    String name = "喜洋洋";
+}

@@ -1,0 +1,26 @@
+package day03;
+
+public class Dem {
+
+    public static void main(String[] args) {
+
+    }
+}
+class Goo extends Foo {
+    public void test() {
+        System.out.println(super.a);
+        System.out.println(super.b);
+        System.out.println(super.c);
+//        System.out.println(super.d);  //编译错误,不可见
+    }
+}
+
+class Foo {
+    public int a = 1;
+    protected int b = 2;
+    int c = 3;
+    private int d = 4;
+    public int getD() {
+        return d;
+    }
+}

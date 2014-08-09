@@ -1,0 +1,77 @@
+package entity;
+
+import java.sql.Date;
+
+public class Cost {
+    private int id;
+    private String name;
+    private int base_duration;
+    private float base_cost;
+    private float unit_cost;
+    private String descr;
+    private char cost_type;
+    private Date create_date;
+    private Date pause_date;
+    private Date close_date;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getBase_duration() {
+        return base_duration;
+    }
+    public void setBase_duration(int base_duration) {
+        this.base_duration = base_duration;
+    }
+    public float getBase_cost() {
+        return base_cost;
+    }
+    public void setBase_cost(float base_cost) {
+        this.base_cost = base_cost;
+    }
+    public float getUnit_cost() {
+        return unit_cost;
+    }
+    public void setUnit_cost(float unit_cost) {
+        this.unit_cost = unit_cost;
+    }
+    public String getDescr() {
+        return descr;
+    }
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
+    public char getCost_type() {
+        return cost_type;
+    }
+    public void setCost_type(char cost_type) {
+        this.cost_type = cost_type;
+    }
+    public Date getCreate_date() {
+        return create_date;
+    }
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+    public Date getPause_date() {
+        return pause_date;
+    }
+    public void setPause_date(Date pause_date) {
+        this.pause_date = pause_date;
+    }
+    public Date getClose_date() {
+        return close_date;
+    }
+    public void setClose_date(Date close_date) {
+        this.close_date = close_date;
+    }
+    
+}

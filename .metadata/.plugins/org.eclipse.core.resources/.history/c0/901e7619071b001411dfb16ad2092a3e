@@ -1,0 +1,14 @@
+package day04;
+/**
+ * 赋值表达式
+ * 赋值表达式的值是赋值的结果
+ */
+public class Demo02 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

@@ -1,0 +1,26 @@
+package day01;
+/**
+ * 移位运算
+ */
+public class Dem04 {
+
+    public static void main(String[] args) {
+        int n = 0xfffffffa;
+        int m = n<<1;
+        System.out.println(Integer.toBinaryString(n));
+        System.out.println(Integer.toBinaryString(m));
+        
+        m = n<<4;
+        System.out.println(Integer.toBinaryString(n));
+        System.out.println(Integer.toBinaryString(m));
+        
+        System.out.println("逻辑右移,高位补0");
+        m = n>>>1;
+        System.out.println(Integer.toBinaryString(n));
+        System.out.println(Integer.toBinaryString(m));
+        System.out.println("数学右移,");
+        
+        
+    }
+
+}

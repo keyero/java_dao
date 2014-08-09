@@ -1,0 +1,13 @@
+package day03;
+/**
+ * 关系运算符
+ */
+public class Demo11 {
+    public static void main(String[] args) {
+        int age = 15;
+        boolean isChild = age<16;
+        System.out.println(isChild);
+        
+//        业务判断:判断一个字符是否为数字字符
+    }
+}

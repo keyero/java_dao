@@ -1,0 +1,11 @@
+package day05;
+
+public class Demo08 {
+
+    public static void main(String[] args) {
+        String[] names = {"Tom", "Jerry", "Andy", "John"};
+        int[] scores = new int[names.length];
+        
+    }
+
+}

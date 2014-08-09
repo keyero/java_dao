@@ -1,0 +1,16 @@
+package day04;
+
+public class Dem03 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+abstract class Too {
+    
+}
+class Xoo {
+    public void test() {
+        System.out.println("Xoo.test()");
+    }
+}

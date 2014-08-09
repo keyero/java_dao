@@ -1,0 +1,13 @@
+package day03;
+/**
+ * 抽象类
+ * 代表逻辑上的抽象概念
+ *
+ */
+public class Dem12 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

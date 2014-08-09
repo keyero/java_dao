@@ -1,0 +1,15 @@
+package dao;
+
+import java.sql.ResultSet;
+
+public class EmpDAO extends BaseDAO {
+
+//    public List<Emp> 
+    
+    @Override
+    public Object toEntity(ResultSet rs) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}

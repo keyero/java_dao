@@ -1,0 +1,12 @@
+package day04;
+/**
+ * 打印出1000以内的所有质数
+ */
+public class Demo12 {
+
+    public static void main(String[] args) {
+        
+        
+    }
+
+}

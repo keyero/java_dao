@@ -1,0 +1,14 @@
+package day01;
+
+import java.util.Scanner;
+
+public class Demo02 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("你是谁?");
+        String name = sc.nextLine();
+        System.out.println("欢迎来到java世界"+name);
+    }
+
+}

@@ -1,0 +1,13 @@
+package day04;
+/**
+ * 条件运算符
+ *  根据查询结果数量和每页显示数量,计算显示页数.
+ *
+ */
+public class Demo01 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

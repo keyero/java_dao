@@ -1,0 +1,47 @@
+package test;
+
+
+
+import java.sql.Date;
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.AccountDAO;
+import entity.Account;
+
+public class TestAccountDAO {
+
+    @Test
+    public void TestSave() throws Exception {
+        AccountDAO accountdao = new AccountDAO();
+        Account account = new Account();
+        account.setLoginName("xuan");
+        account.setLoginPasswd("12345");
+        account.setStatus("3");
+        account.setCreateDate(new Date(System.currentTimeMillis()));
+        account.setRealName("sdf");
+        account.setIdcard("sdf");
+        account.setBirthdate(new Date(System.currentTimeMillis()));
+        account.setGender("s");
+        account.setTelephone("1521552");
+        account.setEmail("email");
+        account.setMailaddress("address");
+        account.setZipcode("zip");
+        account.setId(2);
+
+        accountdao.save(account);
+        List<Account> accountList = accountdao.findAll(1, 3);
+        for (Account accounts : accountList) {
+            System.out.println(accounts.getId());
+        }
+        account = accountdao.findByID(3);
+        System.out.println(account.getRealName());
+        accountdao.update(account);
+        accountdao.updateStatus(2, "3");
+        System.out.println(accountdao.getTotalPages(9));
+        System.out.println(accountdao.findBy(null, "sdf", null, null));
+      
+        
+    }
+}

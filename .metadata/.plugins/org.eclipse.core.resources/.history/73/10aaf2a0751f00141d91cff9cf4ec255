@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration     
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"     
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.tarena.netctoss.po.Account"
+			alias="Account" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="jdbc" />
+			
+			<dataSource type="POOLED">
+				
+				<property name="driver"
+					value="oracle.jdbc.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:tarena" />
+				<property name="username" value="scott" />
+				<property name="password" value="tarena1022" />
+			
+			</dataSource>
+
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="com/tarena/netctoss/dao/AccountDAO.xml" />
+	</mappers>
+
+</configuration>

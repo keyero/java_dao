@@ -1,0 +1,47 @@
+package day03;
+/**
+ * 运算符
+ * 数学运算规则:
+ * 1) 同种类型参与运算(可能会自动类型转换),返回同种类型
+ * 2) 小于32位的数据按照32位int计算
+ * 3) 要注意避免超范围溢出问题
+ * 4) 整数除法是整除
+ */
+public class Demo07 {
+
+    public static void main(String[] args) {
+        //避免超范围计算的溢出问题
+        int max = Integer.MAX_VALUE;
+        int i = max+1;  //发生超范围溢出现象
+        System.out.println(i);  //min
+        
+//        同种类型参与运算
+        int a = 5;
+        long b = 5;
+//        int c = a+b;    //编译错误,long不能转换为int
+        long c = a+b;   //(long)a + b
+        System.out.println(c);
+        
+        long l = max+1; //max+1 返回int已经溢出
+        System.out.println(l);
+        
+        l = (long)max+1;
+        System.out.println(l);
+        
+//        小于32位(byte short char)的数据按照32位int计算
+        byte b1 = 5;
+        byte b2 = 6;
+//        byte b3 = b1+b2;    //编译错误,int不能转换为byte
+        int y = b1+b2;
+        //int字面量(字面量表达式)在不超过byte范围情况下可以给byte类型赋值
+        byte b3 = 5+6;
+        byte b4 = 11;
+        
+//        整数除法是整除
+        
+        
+        
+        
+    }
+
+}

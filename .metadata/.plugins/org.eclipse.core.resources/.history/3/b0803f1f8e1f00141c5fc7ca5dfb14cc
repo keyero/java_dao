@@ -1,0 +1,256 @@
+数据库设计
+1. 三范式
+	1)列的值唯一,不能有重复的列值(必须遵守规则)
+	2)属性完全依赖于主键(必须满足第一范式,必须有主键[主键与业务无关],其他列必须完全依赖于主键)
+		编号	姓名	性别	专业	专业课时	校区
+		1	xxx	m	java	600		//不满足第二范式,因为专业课时强依赖于专业,而不是依赖编号.建议将专业和学生分表建立
+		学生编号	姓名	性别	专业编号		专业编号	专业	专业课时	校区		//满足要求,只能引用主键,不能引用非主键
+	3)属性不依赖于其他非主属性(在特定场合处于效率的考虑,可以有冗余的设计--违反第三范式)[遵守第二范式,去除传递依赖]
+2. E-R关系
+	1)仔细阅读系统的需求规约,研究业务需求
+		账务账户(用户个人信息),业务账户(os用户名,密码),[一对多关系]		资费标准[多对一关系]
+	2)设计并绘制E-R关系图
+3. 数据库设计文档
+ 1)
+ ACCOUNT	账务账号
+ -------------------------------------
+ ID		NUMBER(9)	PK 账务账户ID
+ LOGIN_NAME	VARCHAR(20) NOT NULL	用户自服务用户名
+ LOGIN_PASSWD VARCHAR(8) NOT NULL 用户自服务密码
+ STATUS CHAR(1) NOT NULL 	0:开通 1:暂停 2:删除			//用户信息不是真正意义上删除
+ CREATE_DATE DATE NOT NULL	开通日期
+ PAUSE_DATE	DATE		暂停日期
+ CLOSE_DATE DATE		删除日期
+ REAL_NAME VARCHAR(20) NOT NULL	客户真实姓名
+ IDCARD VARCHAR(18) NOT NULL 身份证号
+ BIRTHDATE DATE NOT NULL	生日
+ GENDER CHAR(1) NOT NULL	性别  F:女	M:男
+ OCCUPATION VARCHAR(50) NULL	职业
+ TELEPHONE VARCHAR(50) NOT NULL 电话
+ EMAIL VARCHAR(50) 邮件
+ MAILADDRESS VARCHAR(100) NOT NULL
+ ZIPCODE CHAR(6) NOT NULL		邮编
+ QQ VARCHAR(15)
+
+2) 
+ SERVICE
+ ---------------------------------------
+ ID NUMBER(10)	PK
+ ACCOUNT_ID NUMBER(9) FK NOT NULL
+ COST_ID NUMBER(4)	FK NOT NULL
+ HOST VARCHAR(15) NOT NULL		主机的IP地址
+ OS_USERNAME VARCHAR(8) NOT NULL  登录主机的用户名
+ OS_PASSWD VARCHAR(8)	NOT NULL  登录主机的密码
+ STATUS CHAR(1) NOT NULL   0:开通 1:暂停 2:删除			//状态改变与账务账户注意匹配信息
+ CREATE_DATE DATE NOT NULL	开通日期
+ PAUSE_DATE	DATE		暂停日期
+ CLOSE_DATE DATE		删除日期
+ 
+3)
+ COST
+ ---------------------------------------
+ ID NUMBER(4) PK
+ NAME VARCHAR(50) NOT NULL
+ BASE_DURATION NUMBER(11) 包时长(小时)	  对应java中的int类型
+ BASE_COST NUMBER(7,2) 基费,固定费用(元)
+ UNIT_COST NUMBER(7,2) 单位费用,(元/时)
+ DESCR VARCHAR(200) 资费描述	//VARCHAR最多不能超过4000
+ COST_TYPE CHAR(1) NOT NULL	1:包月 2:套餐 3:计时
+ CREATE_DATE DATE NOT NULL	创建日期
+ PAUSE_DATE	DATE		暂停日期
+ CLOSE_DATE DATE		删除日期
+
+4)
+ SERVICE_DETAIL
+ ----------------------------------------
+ ID NUMBER(11) PK
+ SERVICE_ID NUMBER(10) FK NOT NULL		关联SERVICE表单
+
+ HOST VARCHAR(15) NOT NULL	主机IP地址			//不符合第三范式,但是为了查询方便,因此增加冗余
+ OS_USERNAME VARCHAR(8)	NOT NULL				//业务数据不会频繁改变才会采用此种方式
+ OS_PASSWD VARCHAR(8) NOT NULL
+ 
+ CLIENT_HOST VARCHAR(15) NOT NULL		客户端IP
+ PID NUMBER(11) NOT NULL 		进程id
+ LOGIN_TIME DATE NOT NULL	 	登入时刻
+ LOGOUT_TIME DATE NOT NULL		登出时刻
+ DURATION NUMBER(20,9) NOT NULL   登录时长
+ COST NUMBER(20,6) NOT NULL  	费用
+ 
+ Bill
+ ID
+ ACCOUNT_ID
+ COST
+ 
+ Bil_ITEM
+ ID
+ BILL_ID
+ SERVICE_ID
+ COST
+ 
+ 
+ --计费算法(最冗余的,实际应该从一对多的多的一方入手,这样可以 提高效率.)
+ 遍历Account
+ 	取出每个Account对应的Service
+ 	遍历这些Service
+ 		取出每个Service对应的Cost信息
+ 		取出该Service对应的ServiceDetail
+ 		计算这些ServiceDetail累积的时间
+ 		计算该Service的费用
+ 		保存到bill_item
+ 计算总费用保存到bill中
+ 
+ --计费算法2
+ 根据Service_Detail计算
+ Service_ID,DURATION(总时长)
+ 然后根据COST表的信息计算如下
+ Service_ID,Cost
+ 得出结果Account_id, Service_id, cost
+ 
+ 具体实现
+ 关联Account,Service, Service_Detail
+ 得出aid,sid,sd_id,duration
+ 分别group by sid,aid
+ 
+ 
+ 
+ --------------------
+ ACCOUNT_ID	Service_ID	COST
+
+根据该信息插入BILL和BILL_ITEM
+ 
+主要业务的操作
+1.新建账务账户并开通一个业务账户
+2.已有账务账号增加业务账户
+3.系统采集并记录日志信息
+4.月底对某个账务账户进行结算
+5.添加一个资费标准
+
+Oracle可以通过序列来生成主键
+
+1. 序列
+create table foo(
+	foo_id number(11),
+	foo_value varchar(50),
+	constraint FOO_PK primary key(foo_id)
+)
+
+创建序列DDL
+create sequence 序列名 
+[start with 开始数值]
+[incremet by 递加数值]
+
+create sequence seq_foo start with 5 incremet by 2;
+删除序列DDL
+drop sequence 序列名
+
+通过伪列nextval获取下一个值(序列自增)
+select seq_foo.nextval from 表名
+通过currval获取当前序列值(序列不会自增)
+select seq_foo.currval from 表名
+使用序列值作为主键
+insert into foo(foo_id, foo_value) values(seq_foo.nextval, ?);
+
+创建一个账务账户
+ AccountDAO
+  void save(Account account)	//完成
+ * List<Account> findAll(int page, int rowsPerPage)	//完成
+ * int getTotalPages(int rowsPerPage)   (count(id)+rowsPerPage-1)%rowsPerPage;	//完成
+  Account findByID(int id)		//完成
+  void update(Account account)  //完成
+  void updateStatus(int id, int newStatus)	//完成
+ * findBy(String idCard, String realName, String loginName, int status)	//完成
+  
+ ServiceDAO
+  List<Service) findByAccountID(int accountID)		//完成
+  void updateStatus(int id, int newStatus)			//
+ CostDAO
+ ServiceDetailDAO
+
+ 编写DAO的技巧
+ 1.实体类
+  number(10)以下对应Integer
+  number(11) 11以上对用Long
+  number()	钱使用BigDecimal  
+  varchar(char) String	
+  date	Date	java.sql.Date
+  最好全使用引用类型,因为要对应数据库里面的null值.
+  属性的命名
+  表(下划线)		实体类
+  Create_date	createDate
+ 
+ //想办法知道查询的结果里有多少列,列明是什么
+ ResultSetMetaData rsmd = rs.getMetaData(); //返回结果集的元数据,元数据中包含查询得到的列明,列的类型等信息
+ rsmd.getColumnCount();
+ rsmd.getColumnName();	//获取列名
+ 
+ apache中的方法lang包
+ StringUtils.capitalize(); //首字母大写
+ apache中beanutils包
+ beanutils.setproperty(obj, name, value);
+ //设置日期类型属性的时候,其值不能为空,为空则会抛出异常
+
+select * from emp where (1=? or name like ?) and (1=? or job like ?)
+//用于解决在搜索数据库当中的关键字设置问题
+
+
+索引
+经常要根据某个列进行查询,选取的列不参加总数的10%,建立索引基于该列的查询效率高
+缺点:空间占用,插入时效率低
+主键自动有索引.
+
+create index i_account_real_name on account(colname);
+create index i_account_real_name on account(upper(colname));		--根据列名的大写来建立索引--
+select * from user_indexes;		--查看索引--
+select * from user_tables; 		--查看所有表信息--
+索引和函数
+select id, real_anme from account where real_name=?		--效率提高--
+select id, real_anme from account where upper(real_name)=?	--索引失效,查询根据索引的列值查询--
+drop index 索引名;
+索引和表最好放在不同的表空间
+
+视图(View)
+create view v_name as select empno from emp;
+grant create view on user_name;
+
+create view e_emp_dept as select empno,ename,dname from emp join dept using(deptno);       //复杂view               
+对视图可以进行DQL操作(查询)
+可以对简单视图执行DML操作
+
+//可以检查数据是否可以通过该视图插入(是否符合该视图的查询条件)
+create view v_sdf as select empno from emp where sal>1000 with check option constraint check_v_sdf;
+//只读视图,只能读,不能改
+create view v_sdf as select empno from emp where sal>1000 with read only constraint check_v_sdf1;
+
+方便权限划分
+简化负责查询
+
+通过线程单例模式解决事务中的连接的唯一性,确认提交事物的一致性
+
+
+建表后添加外键
+alter table service  add constranit ......   
+
+存储过程
+存储在数据库内部,可以对数据进行操作的一段程序 (oracle中可以用PL/SQL写)
+
+cursor	游标
+
+存储过程,可以通过java语言调用
+
+
+
+java DAO框架
+Mybatis ibatis
+1.导入jar包
+2.编写MyBaits定义的配置文件(XML)
+	填充数据,格式以定义好
+3.
+
+
+标记(成对)+文本数据成为xml
+标记和内容一起称为元素.
+1.元素可以嵌套
+2.
+
+ 

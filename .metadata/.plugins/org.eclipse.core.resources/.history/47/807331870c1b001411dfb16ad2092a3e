@@ -1,0 +1,23 @@
+package day04;
+/**
+ * switch case 语句
+ * switch开关
+ * case 情况下
+ * break 打断
+ * 根据分数来计算分数级别: 优秀  良好  中等
+ * 
+ * switch case性能十分优秀
+ * if 多路嵌套,条件灵活,适应性广,性能相对switch差
+ * 
+ * 
+ *
+ */
+public class Demo07 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

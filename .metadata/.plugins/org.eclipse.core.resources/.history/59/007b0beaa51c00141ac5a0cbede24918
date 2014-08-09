@@ -1,0 +1,21 @@
+package day01;
+
+public class Dem08 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}
+
+class Cell {
+    int row;
+    int col;
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+    public void drop() {
+        row++;
+    }
+}

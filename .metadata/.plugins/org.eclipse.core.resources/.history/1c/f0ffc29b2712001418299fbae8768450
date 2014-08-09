@@ -1,0 +1,47 @@
+package day05;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+/**
+ * 服务器端应用程序
+ * @author xupeixuan
+ *
+ */
+public class Server {
+    private ServerSocket server;
+    
+    public static void main(String[] args) throws Exception {
+        //实例化服务器端实例
+        Server server = new Server();
+        
+        //1. 初始化ServerSocket,要注意指定服务端口号
+        server.server = new ServerSocket(8088);
+        
+        //2. 监听8088端口,等待客户端的连接,返回刚刚连接的客户端Socket,accept是一个阻塞方法,会一直执行,直到返回结果为止
+        System.out.println("服务器启动了,等待用户连接...");
+        Socket socket = server.server.accept();
+        System.out.println("一个客户端连接上了...");
+        
+        //3. 接收客户端发送的信息,通过客户端的Socket获取一个输入流
+        InputStream in = socket.getInputStream();
+        /**
+         * 将字节输入流转换为缓冲字符输入流,用于一次读取一行数据
+         * 这里要注意:这边读取一行字符是根据回车判断的,所以客户
+         * 端发送时要带有回行!
+         */
+        InputStreamReader reader = new InputStreamReader(in);
+        BufferedReader br = new BufferedReader(reader);
+        
+        /**
+         * 读取服务端发送过来的一行字符串
+         */
+        String info = br.readLine();
+        System.out.println("客户端说:"+info);
+        
+    }
+    
+}

@@ -1,0 +1,13 @@
+package day06;
+
+import java.util.Arrays;
+
+public class Demo09 {
+
+    public static void main(String[] args) {
+        int[] ary = {2, 4, 1, 6, 8, 9, 3};
+        Demo09.sort(ary);
+        System.out.println(Arrays.toString(ary));
+    }
+
+}

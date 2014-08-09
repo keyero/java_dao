@@ -1,0 +1,23 @@
+package day02;
+
+public class Demo04 {
+
+    public static void main(String[] args) {
+        double pi = 3.141592653589793238464D;
+        float f = 3.141592653589793238464F;
+        System.out.println(pi);
+        System.out.println(f);
+        
+        double d = 2.6;
+        System.out.println(d-2);
+        
+        double c = Math.sin(pi);
+        System.out.println(c);  //不精确的0
+        System.out.println(c==0);//false
+        
+        System.out.println(Math.abs(c)<0.000000001);    //true
+        
+        
+    }
+
+}

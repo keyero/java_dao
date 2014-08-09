@@ -1,0 +1,16 @@
+package day04;
+
+public class Dem02 {
+
+    public static void main(String[] args) {
+        
+    }
+}
+class Koo {
+    int a;
+    class Goo {
+        public void test() {
+            System.out.println(Koo.this.a);
+        }
+    }
+}

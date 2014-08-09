@@ -1,0 +1,29 @@
+package day04;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+
+/**
+ * 阻塞睡眠
+ * @author xupeixuan
+ *
+ */
+public class SleepBlockDemo {
+
+	public static void main(String[] args) {
+		/**
+		 * 电子表
+		 * 输出时间格式	HH:MM:SS
+		 */
+		Date now = null;
+		SimpleDateFormat fmt = new SimpleDateFormat("HH:mm:ss");
+
+		while(true){
+			now = new Date();
+			System.out.println(fmt.format(now));
+		}
+
+	}
+
+}

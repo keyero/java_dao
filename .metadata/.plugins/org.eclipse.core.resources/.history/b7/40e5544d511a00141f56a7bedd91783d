@@ -1,0 +1,13 @@
+package day01;  //包名
+/**
+ * 文件名:HelloWorld.java
+ *
+ */
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+
+    }
+
+}

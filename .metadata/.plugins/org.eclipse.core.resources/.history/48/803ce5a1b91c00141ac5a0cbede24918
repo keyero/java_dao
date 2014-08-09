@@ -1,0 +1,11 @@
+package day02;
+/**
+ * 继承过程,对象的创建过程
+ */
+public class De05 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

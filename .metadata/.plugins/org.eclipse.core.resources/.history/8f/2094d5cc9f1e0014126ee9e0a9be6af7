@@ -1,0 +1,18 @@
+package entity;
+
+import java.sql.Date;
+
+public class Service_detail {
+    private int id;
+    private int serviceId;
+    private String host;
+    private String osUsername;
+    private String osPasswd;
+    private String clientHost;
+    private int pid;
+    private Date loginTime;
+    private Date logoutTime;
+    private double duration;
+    private double cost;
+ 
+}

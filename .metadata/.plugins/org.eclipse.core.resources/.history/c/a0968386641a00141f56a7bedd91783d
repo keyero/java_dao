@@ -1,0 +1,33 @@
+package day03;
+/**
+ * 数据类型转换
+ *
+ */
+public class day06 {
+
+    public static void main(String[] args) {
+//        自动数据类型转换,隐含数据类型转换
+        int i = -2;
+        long l = i; //数据类型转换,符号位扩展:根据符号位进行填充
+        
+        System.out.println(Integer.toBinaryString(i));
+        System.out.println(l);  //-2
+        System.out.println(Long.toBinaryString(l));
+        System.out.println(Long.toBinaryString((long)i));   //自动转换
+        
+        byte b = -2;
+        System.out.println(Integer.toBinaryString(b));
+        System.out.println(Integer.toBinaryString((int)b & 0xff);
+        // b = 11111110
+        // int 11111111 11111111 11111111 11111110
+        // &   00000000 00000000 00000000 11111111   mask面具
+        
+        //     00000000 00000000 00000000 11111110
+//        强制类型转换:有风险:溢出风险和精度损失
+        long x = 56;
+        i = (int)x; //强制类型转换,不超int范围,没有问题
+        
+        
+    }
+
+}

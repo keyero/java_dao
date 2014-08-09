@@ -1,0 +1,5 @@
+package netctoss.dao;
+
+public class AccountDAO {
+
+}

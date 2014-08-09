@@ -1,0 +1,13 @@
+package day03;
+/**
+ * java的二维数组
+ * java本质上没有二维数组,java的二维数组是元素数组的数组
+ *
+ */
+public class Dem11 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

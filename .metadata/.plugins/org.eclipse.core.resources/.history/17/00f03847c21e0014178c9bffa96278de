@@ -1,0 +1,22 @@
+package day02;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Foof {
+    private Foof(){
+    }
+    
+//    private static Map<Thread, Foof> map = new HashMap<Thread, Foof>();
+    //以当前线程为key存放对象的容器
+    private ThreadLocal<Foof> tl = new ThreadLocal<Foof>();
+    public static synchronized Foof getInstance() {
+//        Thread t = Thread.currentThread();
+        Foof foo = tl.get();
+        if (foo == null) {
+            foo = new Foof();
+            map.put(t, foo);
+        }
+        return foo;
+    }
+}

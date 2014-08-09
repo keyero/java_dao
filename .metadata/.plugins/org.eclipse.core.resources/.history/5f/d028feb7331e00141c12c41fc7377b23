@@ -1,0 +1,30 @@
+package dao;
+
+public interface OracleSQL {
+    public static final String SAVE = "insert into account(id, login_name, login_passwd, status, "
+            + "create_date, pause_date, close_date, real_name, idcard, birthdate, gender,occupation,"
+            + "telephone, email, mailaddress, zipcode, qq) values(seq_acc.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
+    public static final String ACCOUNT_FIND_ALL = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,"
+            + "CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,"
+            + "TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from (select ID,LOGIN_NAME,LOGIN_PASSWD,"
+            + "STATUS,CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,"
+            + "OCCUPATION,TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ,rownum num from ACCOUNT "
+            + "where rownum<?) where num>=?";
+
+    public static final String FIND_BY_ID = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,"
+            + "CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,"
+            + "TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from account "
+            + "where id=?";
+    
+    public static final String UPDATE = "update ACCOUNT set LOGIN_NAME=?,LOGIN_PASSWD=?,STATUS=?,CREATE_DATE=?,PAUSE_DATE=?,CLOSE_DATE=?,REAL_NAME=?,IDCARD=?,BIRTHDATE=?,GENDER=?,OCCUPATION=?,TELEPHONE=?,EMAIL=?,MAILADDRESS=?,ZIPCODE=?,QQ=? where ID=?";
+    
+    public static final String FIND_BY = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,"
+            + "CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,"
+            + "TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from account where (1=? or idcard like ?) and (1=? or real_name like ?) and (1=? or login_name like ?) and (1= ? or status=?)";
+    
+    public static final String FIND_BY_ACCOUNT_ID = "select * from service where account_id=?";
+
+    
+}

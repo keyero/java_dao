@@ -1,0 +1,11 @@
+package day02;
+
+public class Demo01 {
+
+    public static void main(String[] args) {
+        System.out.println(age);    //编译错误,age没有找到
+        
+        
+    }
+
+}

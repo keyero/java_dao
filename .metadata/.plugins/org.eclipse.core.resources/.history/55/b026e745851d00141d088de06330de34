@@ -1,0 +1,70 @@
+package day04;
+/**
+ * 代码块:在对象创建期间执行,类似于构造器中的代码
+ * 静态代码块:在类加载旗舰执行
+ *  静态代码可以用于只加载一次的静态资源,如图片资源等
+ */
+public class DEM01 {
+
+    @SuppressWarnings("unused")
+    public static void main(String[] args) {
+        Foo f1 = new Foo();
+        Foo f2 = new Foo();
+    }
+}
+class Foo {
+    static {
+        System.out.println("加载Foo.class");
+    }
+    {
+        System.out.println("HI");
+    }
+}
+
+/*
+访问修饰
+
+public 
+privte 
+protected
+默认
+
+Java 源文件结构
+1) Java文件中可以有多个了类, Java源文件中只能有一个公有类
+  文件名要与公有类一致, 如果没有公有类, 文件名与某个类名
+  一致
+  公有类可以在任何位置可见, 可以跨包访问. 文件中的其他类
+  是默认访问修饰, 仅仅在当前包内部可见!
+  一般情况下: 一个源文件一个公有类!
+2) 关键字出现顺序
+  package {0,1} Java建议使用package
+  //import java.lang.*;
+  import {0,n} Java 默认自动导入 java.lang.*;
+  
+  class {1, n}
+  
+static 静态的: 属于类的资源, 使用类名访问.
+静态属性: 只有一份的变量
+静态方法: 是属于类方法, 可以使用类名直接访问.
+   静态方法中没有this引用
+静态代码块: 是在类加载期间执行的代码块
+
+final 
+final 类
+final 方法
+final 变量: 只能初始化,不能再修改
+
+static final  常量 
+public static final int ROWS = 20;
+public final static int COLS = 10;
+
+内部类: 就是在类内部定义的类
+1) 内部类往往用于"封装" 类的实现, 避免暴露细节, 限制类
+的访问范围
+
+类的访问范围比较
+公有类: 任何位置可见
+同包类: 当前包内可见
+内部类: 一般用于类内部可见
+局部内部类: 匿名类, 仅仅在方法内部可见.
+*/s

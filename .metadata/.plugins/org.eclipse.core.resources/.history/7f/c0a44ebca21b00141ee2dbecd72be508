@@ -1,0 +1,11 @@
+package entity;
+
+import java.math.BigDecimal;
+import java.sql.Date;
+
+public class Emp {
+    private int no;
+    private String name;
+    private Date hireDate;      //导入sql中的jar包
+    private BigDecimal salary;  //不建议使用double
+}

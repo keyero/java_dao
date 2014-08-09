@@ -1,0 +1,14 @@
+package day05;
+/**
+ * 方法就是函数
+ * 1)业务层面是软件的功能
+ * 2)本质上数据的操作算法
+ *
+ */
+public class Demo09 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

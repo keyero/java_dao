@@ -1,0 +1,76 @@
+package entity;
+
+import java.sql.Date;
+
+public class Service {
+    private int id;
+    private int cost_id;
+    private int account_id;
+    private String host;
+    private String os_username;
+    private String os_passwd;
+    private char status;
+    private Date create_date;
+    private Date pause_date;
+    private Date close_date;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getCost_id() {
+        return cost_id;
+    }
+    public void setCost_id(int cost_id) {
+        this.cost_id = cost_id;
+    }
+    public int getAccount_id() {
+        return account_id;
+    }
+    public void setAccount_id(int account_id) {
+        this.account_id = account_id;
+    }
+    public String getHost() {
+        return host;
+    }
+    public void setHost(String host) {
+        this.host = host;
+    }
+    public String getOs_username() {
+        return os_username;
+    }
+    public void setOs_username(String os_username) {
+        this.os_username = os_username;
+    }
+    public String getOs_passwd() {
+        return os_passwd;
+    }
+    public void setOs_passwd(String os_passwd) {
+        this.os_passwd = os_passwd;
+    }
+    public char getStatus() {
+        return status;
+    }
+    public void setStatus(char status) {
+        this.status = status;
+    }
+    public Date getCreate_date() {
+        return create_date;
+    }
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+    public Date getPause_date() {
+        return pause_date;
+    }
+    public void setPause_date(Date pause_date) {
+        this.pause_date = pause_date;
+    }
+    public Date getClose_date() {
+        return close_date;
+    }
+    public void setClose_date(Date close_date) {
+        this.close_date = close_date;
+    }
+}

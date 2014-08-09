@@ -1,0 +1,7 @@
+package NetCTOSS;
+/*
+ * entity
+ */
+public class FooDAO {
+
+}

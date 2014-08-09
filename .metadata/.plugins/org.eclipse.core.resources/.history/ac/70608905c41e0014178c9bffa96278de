@@ -1,0 +1,64 @@
+package utils;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import org.apache.commons.dbcp.BasicDataSource;
+
+import day02.Foof;
+
+
+
+public class DBUtils {
+    private static String driver;
+    private static String url;
+    private static String user;
+    private static String password;
+    private static BasicDataSource ds;
+    private static ThreadLocal<Connection> tl = new ThreadLocal<Connection>();
+
+    static{
+        try{
+            Properties props = new Properties();
+            //从类路径中加载文件
+            props.load(DBUtils.class.getClassLoader().getResourceAsStream("utils/db.properties"));
+            driver = props.getProperty("driver");
+            url = props.getProperty("url");
+            user = props.getProperty("user");
+            password = props.getProperty("password");
+            
+            
+            ds =  new BasicDataSource();
+            ds.setDriverClassName(driver);
+            ds.setUrl(url);
+            ds.setUsername(user);
+            ds.setPassword(password);
+            
+//            Class.forName(driver);
+        
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new RuntimeException();
+        }
+
+    }
+    public static void closeConncetion() throws Exception {
+        Connection con = tl.get();
+        if (con != null) {
+            tl.set(null);
+            con.close();
+        }
+    }
+    public static Connection getConnection() throws Exception{
+//        Connection con = DriverManager.getConnection(url, user, password);
+//        Connection con = ds.getConnection();
+        Connection con = tl.get();
+        if (con == null) {
+            con = ds.getConnection();
+            tl.set(con);
+        }
+        return con;
+    }
+    
+}

@@ -1,0 +1,14 @@
+package day04;
+/**
+ * 计算阶乘
+ *
+ */
+public class Demo08 {
+
+    public static void main(String[] args) {
+        
+        
+        
+    }
+
+}

@@ -1,0 +1,32 @@
+package day03;
+/**
+ * 短路逻辑与非短路逻辑
+ * 短路逻辑 && ||
+ *  第一个表达式能够确定整个表达式的结果,就不再执行第二个表达式,成为短路逻辑
+ * 
+ * 非短路逻辑 & |
+ *  实际工作中,常用短路逻辑
+ *  非短路逻辑会出现在面试和笔试环节
+ *  只有满足短路条件时候才会发生短路运算
+ */
+public class Demo12 {
+
+    public static void main(String[] args) {
+//        业务规则:女的,并且年龄在60岁以上
+        char sex = '男';
+        int age = 25;
+//        短路与
+        if (sex == '女' && age++ >= 60) {
+            System.out.println("欢迎光临");
+        } else {
+            System.out.println("欢迎下次再来");
+        }
+        
+        System.out.println(age);    //25 说明发生短路逻辑
+        
+        
+        
+        
+    }
+
+}

@@ -1,0 +1,26 @@
+package day02;
+/**
+ * 默认构造器现象
+ * 1) 类一定有构造器
+ * 2) 如果类没有构造器,java有提供默认的构造器
+ * 3) 如果类中声明了任何构造器,java不再提供默认构造器
+ */
+public class De01 {
+
+    @SuppressWarnings("unused")
+    public static void main(String[] args) {
+        Foo foo = new Foo();
+        
+        Goo goo = new Goo(8);
+        
+    }
+
+}
+class Foo {
+    
+}
+class Goo {
+    public Goo(int a) {
+        System.out.println("Call Goo(int)");
+    }
+}

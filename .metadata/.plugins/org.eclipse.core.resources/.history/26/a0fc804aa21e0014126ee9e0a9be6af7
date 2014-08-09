@@ -1,0 +1,31 @@
+package entity;
+/*
+ * 获取foo的属性name 等价于 foo.getName();
+ * 
+ * 
+ */
+import java.sql.Date;
+
+public class Service {
+    //成员变量 id
+    private int id;
+    private Cost costId = new Cost();
+    private Account accountId = new Account();
+    private String host;
+    private String osUsername;
+    private String osPasswd;
+    private char status;
+    private Date createDate;
+    private Date pauseDate;
+    private Date closeDate;
+    
+    //属性name--属性指的的是get   set方法
+    //set和get后面的字符串,第一个字母小写是属性
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+ 
+}

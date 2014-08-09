@@ -1,0 +1,13 @@
+package day04;
+/**
+ * 阻塞睡眠
+ * @author xupeixuan
+ *
+ */
+public class SleepBlockDemo {
+
+	public static void main(String[] args) {
+
+	}
+
+}

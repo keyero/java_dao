@@ -1,0 +1,21 @@
+package day02;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TestFoo {
+
+    @Test
+    public void testFoo() {
+        Thread t1 = new Thread(){
+            public void run(){
+                
+            }
+        };
+        Thread t2 = new Thread();
+        
+        
+    }
+
+}

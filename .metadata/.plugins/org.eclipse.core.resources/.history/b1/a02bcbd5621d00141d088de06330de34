@@ -1,0 +1,12 @@
+package dao;
+
+public interface OracleSQL {
+    public static final String SAVE = "insert into account(id, login_name, login_passwd, status, "
+            + "create_date, pause_date, close_date, real_name, idcard, birthdate, gender, "
+            + "occupation, telephone, email, mailaddress, zipcode, qq) "
+            + "values(seq_acc.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+    
+    
+    public static final String ACCOUNT_FIND_ALL = "select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ from (select ID,LOGIN_NAME,LOGIN_PASSWD,STATUS,CREATE_DATE,PAUSE_DATE,CLOSE_DATE,REAL_NAME,IDCARD,BIRTHDATE,GENDER,OCCUPATION,TELEPHONE,EMAIL,MAILADDRESS,ZIPCODE,QQ,rownum num from ACCOUNT where rownum<?) where num>=?";
+
+}

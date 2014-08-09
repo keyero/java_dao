@@ -1,0 +1,13 @@
+package day04;
+/**
+ * 判断一个数是否是质数
+ * i 从2到num/2逐一比较 i是否是num的约数(整除)
+ *
+ */
+public class Demo11 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

@@ -1,0 +1,12 @@
+package day03;
+/**
+ * 私有方法不能被继承,不能被重写
+ * 被继承的方法才能重写
+ */
+public class Dem02 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

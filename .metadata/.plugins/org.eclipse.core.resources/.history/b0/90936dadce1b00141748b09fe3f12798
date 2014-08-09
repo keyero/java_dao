@@ -1,0 +1,13 @@
+package day06;
+/**
+ * 字母猜测游戏
+ * 业务猜测描述:猜测"随机生成"
+ * 
+ */
+public class Demo03 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

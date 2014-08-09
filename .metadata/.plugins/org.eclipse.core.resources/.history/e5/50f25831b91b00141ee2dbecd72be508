@@ -1,0 +1,95 @@
+JDBC是java官方提供的访问数据库的标准,是一系列接口.
+java.sql.Connection
+封装和数据库的连接
+java.sql.Statement
+封装sql语句的执行
+java.sql.ResultSet
+
+PreparedStatement接口
+1)创建连接
+2)创建接口类
+3)set方法
+
+6.JDBC如何处理日期
+
+
+通用解决方案:
+通用查询
+	获取连接
+	获取PS,预编译sql
+	设置参数
+	执行操作
+	遍历结果
+	关闭连接
+	
+通用dql
+事务控制
+
+	创建连接
+	设置自动提交为false
+	try {
+	3.1	DML语句1
+	3.2 DML语句2
+	...
+	4 提交事物	con.commit
+	} catch (exception e) {
+		回滚事务
+	} finally {
+	关闭连接
+	}
+	
+使用连接池
+	为什么用连接池?		节省连接频繁创建开销
+使用批处理
+
+
+
+
+1.Batch处理,批量的插入
+
+stmt.addBatch()		//把刚刚设置好的数据添加批处理缓存
+stmt.executeBatch()	//执行批处理
+注意:缓存的批处理量受客户端内存限制,要指定一个合理的批量值
+
+
+2.JDBC的事务操作
+1)JDBC中对所有的DML会默认提交,在每条DML语句后会默认的加入commit
+con.setautocommit(false);
+con.commit();
+con.rollback();
+
+3.连接池技术(原理)
+连接池是一个软件
+其功能是管理一系列已经建立好的连接
+使用连接池可以节省连接频繁建立的开销
+
+一些成熟的连接池可以根据当时的用户访问量动态的改变所管理连接的数目
+apache commons组件--JDK
+StringUtils
+
+DBCP  数据库连接池
+应用了连接池后,con.close()方法仅是将连接还给连接池,而不是真正的关闭掉
+
+Wrapper
+
+DAO(Data Access Object)
+企业应用中,专门负责数据库访问的程序叫数据访问层
+
+1.实体类
+ 和数据表对应的类,一般只包含数据和对数据的基本访问方法(setter,getter)
+ 一般情况下:
+ 一个实体类对应一个表
+ 一个实体类的对象对应表中的一行数据
+2.DAO类
+负责对数据库的CRUD(增删改查)
+封装所有对数据库的操作
+DAO中有很多操作,每一种方法都是对数据库的操作
+3.数据连接工具
+ 用于封装对数据库连接对象的获取
+
+
+
+
+
+
+

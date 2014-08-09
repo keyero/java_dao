@@ -1,0 +1,31 @@
+package day03;
+
+public class Demo02 {
+
+    public static void main(String[] args) {
+        char c = 20013;
+        char ch = '中';
+        System.out.println(c);
+        
+        c = 65;
+        System.out.println(c);
+        c = 66;
+        System.out.println(c);
+        
+        System.out.println((int)'A');
+        System.out.println((int)'B');
+        
+        System.out.println((int)'刘');
+        
+        c = '\n';   //换行字符
+        c = '\r';   //回车字符
+        c = '\t';   //tab
+        c = '\\';   //  \
+        c = '\'';   //'
+        c = '\"';   //"
+        c = '\u4e2d';   //16进制Unicode编码
+        
+        
+    }
+
+}

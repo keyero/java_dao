@@ -1,0 +1,28 @@
+package test;
+
+
+import java.util.List;
+
+import org.junit.Test;
+
+import dao.ServiceDAO;
+import entity.Service;
+
+public class TestServiceDAO {
+
+    @Test
+    public void TestfindByAccountID() throws Exception {
+        ServiceDAO servicedao = new ServiceDAO();
+        List<Service> servicelist = servicedao.findByAccountID(2);
+        for (Service services : servicelist) {
+            System.out.println(services.getHost());
+        }
+    }
+    
+    @Test
+    public void TestUpdateStatus() throws Exception {
+        ServiceDAO servicedao = new ServiceDAO();
+        servicedao.updateStatus(2, 3);
+        System.out.println("hello");
+    }
+}

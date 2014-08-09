@@ -1,0 +1,13 @@
+package dao;
+
+import java.sql.ResultSet;
+
+public class EmpDAO extends BaseDAO {
+
+    @Override
+    public Object toEntity(ResultSet rs) throws Exception {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+}

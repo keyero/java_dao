@@ -1,0 +1,12 @@
+package NetCTOSS;
+
+import org.junit.Test;
+
+public class TestFooDAO {
+
+    @Test
+    public void TestSave() {
+        
+    }
+
+}

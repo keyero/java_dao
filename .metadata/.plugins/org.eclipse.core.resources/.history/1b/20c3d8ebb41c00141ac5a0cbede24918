@@ -1,0 +1,62 @@
+package day02;
+/**
+ * 继承关系
+ *  1 子类继承父类的属性和方法,父类的属性和方法被所有子类共享
+ *  可以简化子类的开发
+ *  2 子类型是多种多样的,子类型多态
+ *  
+ *  业务案例:四格方块(Tetromino)有七种类型
+ *  实现:
+ *    定义四格方块类Tetromino(属性:四个格  方法:下落)
+ *    子类型就是继承四格方块类的属性和方法
+ *    子类型要定义构造器,初始化格子的位置
+ *    extends扩展,是继承的关键字
+ */
+public class De02 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}
+
+class T extends Tetromino {
+    public T() {
+        this.cells[0] = new Cell(0, 4); //旋转轴
+        this.cells[1] = new Cell(0, 3);
+        this.cells[2] = new Cell(0, 5);
+        this.cells[3] = new Cell(1, 4);
+    }
+}
+
+
+class I extends Tetromino {
+    public I() {
+        this.cells[0] = new Cell(0, 4);
+        this.cells[1] = new Cell(0, 3);
+        this.cells[2] = new Cell(0, 5);
+        this.cells[3] = new Cell(0, 6);
+    }
+}
+
+class Tetromino {
+    Cell[] cells = {null, null, null, null};
+    public void softDrop() {
+        cells[0].row++;
+        cells[1].row++;
+        cells[2].row++;
+        cells[3].row++;
+    }
+}
+
+class Cell {
+    int row;
+    int col;
+    public Cell(int row, int col) {
+        this.row = row;
+        this.col = col;
+    }
+    public String toString() {
+        return "["+row+","+col+"]";
+    }
+}

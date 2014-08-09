@@ -1,0 +1,12 @@
+package day06;
+/**
+ * Arrays集合的工具类
+ *
+ */
+public class Demo04 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

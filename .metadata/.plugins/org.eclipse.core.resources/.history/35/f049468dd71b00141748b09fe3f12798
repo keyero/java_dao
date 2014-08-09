@@ -1,0 +1,14 @@
+package day06;
+/**
+ * 数组的扩容
+ *  1 数组长度是不可改变的
+ *  2 数组变量可以重新赋值引用不同的数组
+ *  3 利用更换数组可以实现数组的扩容
+ */
+public class Demo08 {
+
+    public static void main(String[] args) {
+        
+    }
+
+}

@@ -1,0 +1,26 @@
+package utils;
+
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+
+import org.apache.commons.beanutils.BeanUtils;
+
+public class EntityUtils {
+
+    /**
+     * 把结果集中的数据填充到对象中
+     * @throws SQLException 
+     */
+    public static void fillEntity(ResultSet rs, Object obj) throws SQLException {
+        ResultSetMetaData rsmd = rs.getMetaData();
+        for (int i=1; i<=rsmd.getColumnCount(); i++) {
+            String columnName = rsmd.getColumnName(i);
+            Object columnValue = rs.getObject(columnName);
+            String propertyName = toCamel(columnName);
+            if (columnValue != null) {
+                BeanUtils.setProperty(obj, propertyName, columnValue);
+            }
+        }
+    }
+}

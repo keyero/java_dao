@@ -1,0 +1,83 @@
+package entity;
+
+import java.sql.Date;
+
+public class Service_detail {
+    private int id;
+    private int service_id;
+    private String host;
+    private String os_username;
+    private String os_passwd;
+    private String client_host;
+    private int pid;
+    private Date login_time;
+    private Date logout_time;
+    private double duration;
+    private double cost;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+    public int getService_id() {
+        return service_id;
+    }
+    public void setService_id(int service_id) {
+        this.service_id = service_id;
+    }
+    public String getHost() {
+        return host;
+    }
+    public void setHost(String host) {
+        this.host = host;
+    }
+    public String getOs_username() {
+        return os_username;
+    }
+    public void setOs_username(String os_username) {
+        this.os_username = os_username;
+    }
+    public String getOs_passwd() {
+        return os_passwd;
+    }
+    public void setOs_passwd(String os_passwd) {
+        this.os_passwd = os_passwd;
+    }
+    public String getClient_host() {
+        return client_host;
+    }
+    public void setClient_host(String client_host) {
+        this.client_host = client_host;
+    }
+    public int getPid() {
+        return pid;
+    }
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+    public Date getLogin_time() {
+        return login_time;
+    }
+    public void setLogin_time(Date login_time) {
+        this.login_time = login_time;
+    }
+    public Date getLogout_time() {
+        return logout_time;
+    }
+    public void setLogout_time(Date logout_time) {
+        this.logout_time = logout_time;
+    }
+    public double getDuration() {
+        return duration;
+    }
+    public void setDuration(double duration) {
+        this.duration = duration;
+    }
+    public double getCost() {
+        return cost;
+    }
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+}

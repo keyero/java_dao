@@ -1,0 +1,160 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.DBUtils;
+
+public abstract class BaseDAO<E> {
+
+    /**
+     * 测试成功
+     */
+    // 写一个方法封装所有的查询操作
+    // 该方法的修饰符使用protedted供子类调用
+    // 参数:
+    // 1.要执行的SQL语句
+    // 2.要设置的参数个数和类型都不确定
+    protected List<E> query(String querySQL, Object[] params) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            ResultSet rs = queryRs(con, querySQL, params);
+            List<E> list = new ArrayList<E>();
+            while (rs.next()) {
+                list.add(toEntity(rs));
+            }
+            return list;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    protected List<Object> queryConut(String querySQL, Object[] params)
+            throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            ResultSet rs = queryRs(con, querySQL, params);
+            List<Object> list = new ArrayList<Object>();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int count = rsmd.getColumnCount();
+            if (count > 1) {
+                //集合中存放对象的数组
+                while (rs.next()) {
+                    Object[] arr = new Object[count];
+                    for (int i =0; i< arr.length; i++){
+                        arr[i] = rs.getObject(i+1);
+                    }
+                    list.add(arr);
+                }
+            } else {
+                //集合中存放单个对象
+                while (rs.next()) {
+                    list.add(rs.getObject(1));
+                }
+            }
+            
+            return list;
+        } catch (Exception e) {
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    private ResultSet queryRs (Connection con, String querySQL, Object[] params) throws Exception {
+        PreparedStatement stmt = con.prepareStatement(querySQL);
+        if (params != null) {
+            for (int i=0; i<params.length; i++) {
+                stmt.setObject(i+1, params[i]);
+                }
+            }
+        return stmt.executeQuery();
+    }
+
+    /**
+     * 测试成功
+     */
+    protected void update(String updateSQL, Object[] params) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            PreparedStatement stmt = con.prepareStatement(updateSQL);
+            if (params != null) {
+                for (int i = 0; i < params.length; i++) {
+                    stmt.setObject(i + 1, params[i]);
+                }
+            }
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    /**
+     * 测试成功 增加功能实现成功
+     */
+    protected void add(String addSQL, Object[] params) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            PreparedStatement stmt = con.prepareStatement(addSQL);
+            if (params != null) {
+                for (int i = 0; i < params.length; i++) {
+                    // System.out.println(params[i]);
+                    stmt.setObject(i + 1, params[i]);
+                    // System.out.println(i+"次");
+                }
+            }
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    protected void delete(String deleteSQL, Object[] parpams) throws Exception {
+        Connection con = null;
+        try {
+            con = DBUtils.getConnection();
+            PreparedStatement stmt = con.prepareStatement(deleteSQL);
+            if (parpams != null) {
+                for (int i = 0; i < parpams.length; i++) {
+                    stmt.setObject(i + 1, parpams[i]);
+                }
+            }
+            stmt.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        } finally {
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+    // 不同的子类用不同的方式把结果集中的数据转换为实体对象
+    public abstract E toEntity(ResultSet rs) throws Exception;
+
+}
